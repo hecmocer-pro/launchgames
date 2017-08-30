@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+    <style>
+    .container{
+      background-color: blueviolet;
+    }
+    </style>
+    <div id="container" style="height: 100vh;">
+      <button id="btnStart">Start</button>
+      <button id="btnFinish">Finish</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
+      (function(){
+        var socket = io();
+        socket.on('server message', function(msg){
+          console.log('message: ', msg);
+        });
+
+        socket.on('pad message', function(msg){
+          if(msg.pressed) {
+            container.classList.add('container');
+          } else {
+            container.classList.remove('container');
+          }
+        });
+
+        const buttonStart = document.querySelector('#btnStart');
+        const buttonFinish = document.querySelector('#btnFinish');
+        const container = document.querySelector('#container');
+
+        buttonStart.addEventListener('click', (e) => {
+          socket.emit('client message', 'START');
+        });
+
+        buttonFinish.addEventListener('click', (e) => {
+          socket.emit('client message', 'FINISH');
+        });
+      })();
+    </script>
+  </body>
+</html>
