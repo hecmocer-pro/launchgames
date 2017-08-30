@@ -20,6 +20,6 @@ io.on('connection', function(socket){
 
   socket.emit('server connected');
 
-  socket.on('client connected', launchpad.connect);
-  socket.on('client disconnected', launchpad.disconnect);
+  socket.on('connect client', launchpad.connect);
+  socket.on('disconnect client', launchpad.disconnect);
 });
