@@ -1,27 +1,23 @@
 (function(){
   const socket = io();
 
-  const buttonStart = document.querySelector('#btnStart');
-  const buttonFinish = document.querySelector('#btnFinish');
-  const container = document.querySelector('#container');
+  socket.on('server socket connected', function(msg){
+    console.log('Server socket connected');
 
-  socket.on('server connected', function(msg){
-    console.log('Server connected');
-
-    buttonStart.addEventListener('click', (e) => {
-      socket.emit('connect client');
+    openGames.forEach(openGame => {
+      openGame.addEventListener('click', (e) => {
+        socket.emit('connect client');
+      });
     });
 
-    buttonFinish.addEventListener('click', (e) => {
-      socket.emit('disconnect client');
+    closeGames.forEach(closeGame => {
+      closeGame.addEventListener('click', (e) => {
+        socket.emit('disconnect client');
+      });
     });
   });
 
   socket.on('pad message', function(msg){
     console.log('pad message: ', msg);
   });
-
-
-
-
 })();

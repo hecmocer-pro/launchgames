@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  --snake-color: #9493FE;
+  --simon-says-color: #4ECDC4;
+  --fast-color: #C7F464;
+  --mineseeker-color: #FF6B6B;
+  /* --chess-color: #C44D58; */
+
+  --snake-color-transparency: rgba(148,147,254, .5);
+  --simon-says-color-transparency: rgba(78,205,196, .5);
+  --fast-color-transparency: rgba(199,244,100, .5);
+  --mineseeker-color-transparency: rgba(255,107,107, .5);
+  /* --chess-color-transparency: rgba(196,77,88, .5); */
+}
+
+.onboarding {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.onboarding .heading{
+  font-family: cursive;
+  font-size: 28px;
+  margin-bottom: 0;
+}
+.onboarding > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.onboarding > ul > li{
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  padding: 5%;
+  min-width: 250px;
+  min-height: 250px;
+  justify-content: center;
+}
+
+.onboarding > ul > li > .openGame{
+  width: 250px;
+  height: 250px;
+  background-color: transparent;
+  border: 3px solid;
+  font-family: monospace;
+  font-size: 16px;
+  overflow: hidden;
+}
+.onboarding > ul > li > .openGame.snake{
+  background-color: var(--snake-color-transparency);
+  border-color: var(--snake-color);
+}
+.onboarding > ul > li > .openGame.snake:not([disabled]):hover{
+  background-color: var(--snake-color);
+  border-color: #000;
+}
+.onboarding > ul > li > .openGame.simonSays{
+  background-color: var(--simon-says-color-transparency);
+  border-color: var(--simon-says-color);
+}
+.onboarding > ul > li > .openGame.simonSays:not([disabled]):hover{
+  background-color: var(--simon-says-color);
+  border-color: #000;
+}
+.onboarding > ul > li > .openGame.fast{
+  background-color: var(--fast-color-transparency);
+  border-color: var(--fast-color);
+}
+.onboarding > ul > li > .openGame.fast:not([disabled]):hover{
+  background-color: var(--fast-color);
+  border-color: #000;
+}
+.onboarding > ul > li > .openGame.mineseeker{
+  background-color: var(--mineseeker-color-transparency);
+  border-color: var(--mineseeker-color);
+}
+.onboarding > ul > li > .openGame.mineseeker:not([disabled]):hover{
+  background-color: var(--mineseeker-color);
+  border-color: #000;
+}
+
+.game{
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.game.snake {
+  background-color: var(--snake-color);
+}
+.game.simon-says {
+  background-color: var(--simon-says-color);
+}
+.game.fast {
+  background-color: var(--fast-color);
+}
+.game.mineseeker {
+  background-color: var(--mineseeker-color);
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+.showing {
+  animation-name: showingAnimation;
+  animation-fill-mode: forwards;
+  animation-duration: 600ms;
+}
+.hiding {
+  animation-name: hidingAnimation;
+  animation-fill-mode: forwards;
+  animation-duration: 600ms;
+}
+
+.WIP::before {
+  content: "WIP";
+  position: relative;
+  display: block;
+  left: -25%;
+  top: 0;
+  transform: rotate(.9turn);
+  font-size: 52px;
+  background-color: rgba(0,0,0,0.1);
+  width: 150%;
+}
+
+@keyframes showingAnimation {
+    from {opacity: 0}
+    to {opacity: 100%}
+}
+
+@keyframes hidingAnimation {
+    from {opacity: 100%}
+    to {opacity: 0}
+}

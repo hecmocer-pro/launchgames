@@ -3,23 +3,57 @@
   <head>
     <title></title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+
   </head>
   <body>
 
-    <style>
-    .container{
-      background-color: blueviolet;
-    }
-    </style>
-    <div id="container" style="height: 100vh;">
-      <button id="btnStart">Start</button>
-      <button id="btnFinish">Finish</button>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="onboarding">
+      <h2 class="heading">Choose a game 😁🎮</h2>
+      <ul>
+        <li>
+          <button class="openGame snake" data-game="snake">
+            <span>SNAKE</span>
+          </button>
+        </li>
+        <li>
+          <button class="openGame simonSays WIP" disabled data-game="simon-says">
+            <span>SIMON SAYS</span>
+          </button>
+        </li>
+        <li>
+          <button class="openGame fast WIP" disabled data-game="fast">
+            <span>FAST</span>
+          </button>
+        </li>
+        <li>
+          <button class="openGame mineseeker WIP" disabled data-game="mineseeker">
+            <span>MINESEEKER</span>
+          </button>
+        </li>
+      </ul>
     </div>
 
+    <div class="game snake hidden" data-game="snake">
+      <button class="closeGame" data-game="snake">CLOSE</button>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <!-- <div class="game simon-says hidden" data-game="simon-says">
+      <button class="closeGame" data-game="simon-says">CLOSE</button>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <div class="game fast hidden" data-game="fast">
+      <button class="closeGame" data-game="fast">CLOSE</button>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+    <div class="game mineseeker hidden" data-game="mineseeker">
+      <button class="closeGame" data-game="mineseeker">CLOSE</button>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-    <script src="socket.js"></script>
     <script src="dom.js"></script>
+    <script src="socket.js"></script>
   </body>
 </html>
