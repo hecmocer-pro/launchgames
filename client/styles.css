@@ -3,13 +3,13 @@ body {
   --snake-color: #9493FE;
   --simon-says-color: #4ECDC4;
   --fast-color: #C7F464;
-  --mineseeker-color: #FF6B6B;
+  --minesweeper-color: #FF6B6B;
   /* --chess-color: #C44D58; */
 
   --snake-color-transparency: rgba(148,147,254, .5);
   --simon-says-color-transparency: rgba(78,205,196, .5);
   --fast-color-transparency: rgba(199,244,100, .5);
-  --mineseeker-color-transparency: rgba(255,107,107, .5);
+  --minesweeper-color-transparency: rgba(255,107,107, .5);
   /* --chess-color-transparency: rgba(196,77,88, .5); */
 }
 
@@ -80,12 +80,12 @@ body {
   background-color: var(--fast-color);
   border-color: #000;
 }
-.onboarding > ul > li > .openGame.mineseeker{
-  background-color: var(--mineseeker-color-transparency);
-  border-color: var(--mineseeker-color);
+.onboarding > ul > li > .openGame.minesweeper{
+  background-color: var(--minesweeper-color-transparency);
+  border-color: var(--minesweeper-color);
 }
-.onboarding > ul > li > .openGame.mineseeker:not([disabled]):hover{
-  background-color: var(--mineseeker-color);
+.onboarding > ul > li > .openGame.minesweeper:not([disabled]):hover{
+  background-color: var(--minesweeper-color);
   border-color: #000;
 }
 
@@ -105,8 +105,8 @@ body {
 .game.fast {
   background-color: var(--fast-color);
 }
-.game.mineseeker {
-  background-color: var(--mineseeker-color);
+.game.minesweeper {
+  background-color: var(--minesweeper-color);
 }
 
 .hidden {
@@ -144,4 +144,45 @@ body {
 @keyframes hidingAnimation {
     from {opacity: 100%}
     to {opacity: 0}
+}
+
+.toast{
+  position: absolute;
+  bottom: -60px;
+  left: 10px;
+  min-height: 50px;
+  width: calc(100% - 20px);
+  background-color: palegoldenrod;
+  transition: color 1s, bottom 1s;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  border: solid black 2px;
+  color: transparent;
+}
+.toast > * {
+  width: calc(100% - 40px);
+  padding-left: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.toast.opened{
+  bottom: 10px;
+  color: #000;
+}
+
+@keyframes hidingAnimation {
+    from {opacity: 100%}
+    to {opacity: 0}
+}
+
+.closeGame{
+  border: solid 1px turquoise;
+  background-color: paleturquoise;
+  width: 40%;
+  margin: 30%;
+  height: 75px;
+  padding: 20px;
+  font-family: monospace;
+  font-size: 26px;
 }

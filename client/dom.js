@@ -1,6 +1,7 @@
 const openGames = document.querySelectorAll('.openGame:not(.WIP)');
 const closeGames = document.querySelectorAll('.closeGame');
 const games = document.querySelectorAll('.game');
+const toastSlot = document.querySelector('#toastSlot');
 
 (function initButtons() {
   openGames.forEach((openGame) => {
@@ -39,4 +40,20 @@ function hide(node){
     node.classList.add('hidden');
     node.classList.remove('hiding');
   }, 600);
+}
+
+function openToast(msg){
+  let toast = document.createElement('DIV');
+  toast.classList.add('toast');
+  toast.innerHTML = `<p>${msg}</p>`;
+
+  toastSlot.appendChild(toast);
+
+  toast.classList.add('opened');
+  setTimeout(() => {
+    toast.classList.remove('opened');
+    setTimeout(() => {
+      toastSlot.removeChild(toast);
+     }, 1000)
+  }, 3000);
 }
