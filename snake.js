@@ -51,6 +51,7 @@ let gameLoop = function(){
 }
 
 function checkIfPossible() {
+  let isPossible = false;
   let newHead = [head[0], head[1]];
   if(direction === 'left'){
     newHead[0]--;
@@ -63,7 +64,13 @@ function checkIfPossible() {
   }
   inertia = direction;
   head = newHead;
-  return head[0] >= 0 && head[0] <= 7 && head[1] >= 0 && head[1] <= 7;
+  if (head[0] >= 0 && head[0] <= 7 && head[1] >= 0 && head[1] <= 7) {
+    isPossible = true;
+    for(let i=0; i < snake.length && isPossible; i++){
+      isPossible = snake[i][0] !== head[0] || snake[i][1] !== head[1];
+    }
+  }
+  return isPossible;
 }
 
 function checkIfTarget() {
@@ -83,42 +90,6 @@ function paint(){
   pad.col(targetColor, target);
 }
 
-// let gameRender = function() {
-//   let nextPosition = [snakeBuffer[0][0], snakeBuffer[0][1]];
-//   let lastPosition = snakeBuffer.pop();
-//   if(direction === 'left'){
-//     nextPosition[0]--;
-//   } else if(direction === 'right'){
-//     nextPosition[0]++;
-//   } else if(direction === 'up'){
-//     nextPosition[1]--;
-//   } else if(direction === 'down'){
-//     nextPosition[1]++;
-//   }
-//   snakeBuffer.unshift(nextPosition);
-//   objectiveCandidates.splice(objectiveCandidates.indexOf(nextPosition), 1);
-//   objectiveCandidates.push(lastPosition);
-//   pad.col(pad.red.off, lastPosition);
-//   pad.col(pad.red, snakeBuffer[0]).then( () => {
-//     setTimeout(() => {
-//       pad.col(pad.green, snakeBuffer[0]);
-//     }, 100)
-//   });
-
-//   if(snakeBuffer[0][0] > 7 || snakeBuffer[0][0] < 0 || snakeBuffer[0][1] > 7 || snakeBuffer[0][1] < 0 ){
-//     endGame();
-//   }
-//   if(snakeBuffer[0][0] === objective[0] && snakeBuffer[0][1] === objective[1]){
-//     achievedObjective();
-//     snakeBuffer.push(lastPosition);
-//   }
-// }
-
-// let achievedObjective = function(){
-//   generateTarget();
-//   currentLevel++;
-// }
-
 function generateInitialSnake() {
   snake = [];
   snake.push([getRandomIntInclusive(0, 7), getRandomIntInclusive(0, 7)]);
@@ -131,6 +102,7 @@ let generateTarget = function(){
   target = targetCandidates[getRandomIntInclusive(0, targetCandidates.length - 1)];
 }
 
+//NOT THE DIRECTION WHERE THE SNAKE CURRENTLY IS
 function generateRandomValidDirection() {
   let validDirections = getValidDirections();
   direction = validDirections[getRandomIntInclusive(0, validDirections.length - 1)];
@@ -163,6 +135,7 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
 }
 
+//NOT THE SAME ADJACENT AS BEFORE
 function getRandomAdjacent(pair, max = 8) {
   let [x, y] = pair;
   let nx, ny;
