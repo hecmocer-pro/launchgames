@@ -6,11 +6,16 @@ Local project for messing around with the Novation Launchpad & lauchpad-mini lib
 
 - Install [nodejs](https://nodejs.org/en/download/)
 
+- Download this repository
+
 - Open a terminal and execute
 
   ```npm install -g nodemon```
+  ```npm i```
 
-- Download this repository
+# Run
+
+- Connect the Launchpad
 
 - In a terminal, at the repository root folder execute
 
