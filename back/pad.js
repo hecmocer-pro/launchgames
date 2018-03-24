@@ -2,6 +2,7 @@
 
 const Launchpad = require('launchpad-mini');
 const snake = require('./snake.js');
+// const simon = require('./simon-says.js');
 const launchpad = new Launchpad();
 const pad = {};
 
@@ -60,16 +61,24 @@ launchpad.on('key', k => {
   gamePadFunction(k);
 });
 
-/* Inicia el SNAKE */
-pad.launchSnake = () => {
-  snake.init(launchpad);
-  gamePadFunction = snake.padFunction;
+pad.launch = {
+  snake: () => {
+    snake.init(launchpad);
+    gamePadFunction = snake.padFunction;
+  },
+  simon: () => {},
+  fast: () => {},
+  minesweeper: () => {},
 }
 
-/* Mata el SNAKE */
-pad.killSnake = () => {
-  snake.end();
-  gamePadFunction = () => {};
+pad.kill = {
+  snake: () => {
+    snake.end();
+    gamePadFunction = () => {};
+  },
+  simon: () => {},
+  fast: () => {},
+  minesweeper: () => {},
 }
 
 module.exports = pad;

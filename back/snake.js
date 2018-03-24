@@ -1,5 +1,7 @@
 "use strict";
 
+const padUtils = require('./padUtils.js');
+
 let Snake = {};
 let pad;
 

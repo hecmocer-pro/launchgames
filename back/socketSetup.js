@@ -24,16 +24,16 @@ const fn = {
   launchGame: function(msg) {
     switch (msg) {
       case 'snake':
-        pad.launchSnake();
+        pad.launch.snake();
         break;
       case 'simon-says':
-        pad.launchSimonSays();
+        pad.launch.simon();
         break;
       case 'fast':
-        pad.launchFast();
+        pad.launch.fast();
         break;
       case 'minesweeper':
-        pad.launchMinesweeper();
+        pad.launch.minesweeper();
         break;
       default:
         break;
@@ -42,16 +42,16 @@ const fn = {
   killGame: function(msg) { 
     switch (msg) {
       case 'snake':
-        pad.killSnake();
+        pad.kill.snake();
         break;
       case 'simon-says':
-        pad.killSimonSays();
+        pad.kill.simon();
         break;
       case 'fast':
-        pad.killFast();
+        pad.kill.fast();
         break;
       case 'minesweeper':
-        pad.killMinesweeper();
+        pad.kill.minesweeper();
         break;
       default:
         break;
