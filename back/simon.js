@@ -6,69 +6,62 @@ let pad;
 // game Status
 let simon = [];
 let simonLeft = [];
+let iaTurn = false;
+let iaPaint = false;
 
-let initGame = function(){
+const initGame = function(){
   pad.reset(0);
   simon = [];
   simonLeft = [];
   gameLoop();
 }
 
-let gameLoop = function(){
+const gameLoop = function(){
+  if (iaTurn) {
+    // simon.push(NEW RANDOMPAIR)
+    // iaPaintLoop({ data: simon, paint: true })
+  }
+  /* ELSE turno del jugador, esperar a que haga movimiento y capturarlo en padFunction */
   setTimeout(gameLoop, 500);
 }
 
-function paint(){
-  pad.reset(0);
-//   snake.forEach((pair, index) => {
-//     pad.col(snakeColor, pair);
-//   });
-//   pad.col(snakeHeadColor, snake[0]).then( () => {
-//     setTimeout(() => {
-//       pad.col(snakeColor, snake[0]);
-//     }, 100);
-//   });
-//   pad.col(targetColor, target);
+const iaPaintLoop = function({ pairs, paint }) {
+  if (pairs.length > 0) {
+    pad.clean();
+    if (paint) {
+      // pop
+      // paint
+      setTimeout(function () {
+        iaPaintLoop(pairs, false);
+      }, 500); // decreasing per level
+    } else {
+      setTimeout(function () {
+        iaPaintLoop(pairs, true);
+      }, 500); // decreasing per level
+    }
+  } else {
+    // turno de jugador
+  }
+}
+
+const checkHit = function() {
+
 }
 
 Simon.padFunction = k => {
-  if(k.pressed) {
-    if((inertia === 'right' || inertia === 'left') && k.y !== snake[0][1]){
-      direction = k.y < snake[0][1] ? 'up' : 'down';
-    } else if((inertia === 'up' || inertia === 'down') && k.x !== snake[0][0]) {
-      direction = k.x < snake[0][0] ? 'left' : 'right';
+  if (!iaTurn) {
+    hit = checkHit();
+    if (hit) {
+      // pop
+    } else {
+      // end game
     }
   }
 };
 
-Simon.init = (param) => {
-  pad = param;
+Simon.init = (pad) => {
+  pad = pad;
   initGame();
-}
-
-function getBoard() {
-  let board = [];
-  for (var i = 0; i < 8; i++) {
-    for (var j = 0; j < 8; j++) {
-      board.push([i,j]);
-    }
-  }
-  return board;
-}
-
-function getBoardLeft() {
-  let board = getBoard();
-  let foundIndex = -1;
-  for(let i=0; i < snake.length; i++) {
-    board.splice(foundIndex, 1);
-    for(let j=0; j < board.length; j++) {
-      if(snake[i][0] === board[j][0] && snake[i][1] === board[j][1]){
-        foundIndex = j;
-        break;
-      }
-    }
-  }
-  return board;
 }
 
 module.exports = Snake;

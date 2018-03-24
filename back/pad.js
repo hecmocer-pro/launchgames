@@ -63,7 +63,7 @@ launchpad.on('key', k => {
 
 pad.launch = {
   snake: () => {
-    snake.init(launchpad);
+    snake.init(pad.utils);
     gamePadFunction = snake.padFunction;
   },
   simon: () => {},
@@ -80,5 +80,42 @@ pad.kill = {
   fast: () => {},
   minesweeper: () => {},
 }
+
+pad.utils = {
+  colors: {
+    red: launchpad.red,
+    green: launchpad.green,
+    amber: launchpad.amber,
+  },
+  clean: function() {
+    launchpad.reset(0);
+  },
+  getSideControls: function() {
+
+  },
+  getBoardFull: function() {
+    let board = [];
+    for (var i = 0; i < 8; i++) {
+      for (var j = 0; j < 8; j++) {
+        board.push([i,j]);
+      }
+    }
+    return board;
+  },
+  getBoardLeft: function() {
+    let fullBoard = pad.utils.getBoardFull();
+    return fullBoard.filter((pair) => {
+      return pad.paintedBoard.find((pairPainted) => {
+        return pairPainted[0] === pair[0] && pairPainted[1] === pair[1];
+      })
+    });
+  },
+  paint: function(color, pair) {
+    return launchpad.col(color, pair);
+  }
+}
+
+pad.paintedBoard = [];
+pad.board = pad.utils.getBoardFull();
 
 module.exports = pad;

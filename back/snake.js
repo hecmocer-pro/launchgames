@@ -1,9 +1,7 @@
 "use strict";
 
-const padUtils = require('./padUtils.js');
-
 let Snake = {};
-let pad;
+let pad
 
 // game Status
 let isPlaying = false;
@@ -19,10 +17,7 @@ let snakeHeadColor;
 let targetColor;
 
 let initGame = function(){
-  pad.reset(0);
-  snakeColor = pad.green;
-  snakeHeadColor = pad.red;
-  targetColor = pad.amber;
+  pad.clean();
   isPlaying = true;
   currentLevel = 1;
   generateInitialSnake();
@@ -80,16 +75,16 @@ function checkIfTarget() {
 }
 
 function paint(){
-  pad.reset(0);
+  pad.clean();
   snake.forEach((pair, index) => {
-    pad.col(snakeColor, pair);
+    pad.paint(snakeColor, pair);
   });
-  pad.col(snakeHeadColor, snake[0]).then( () => {
+  pad.paint(snakeHeadColor, snake[0]).then( () => {
     setTimeout(() => {
-      pad.col(snakeColor, snake[0]);
+      pad.paint(snakeColor, snake[0]);
     }, 100);
   });
-  pad.col(targetColor, target);
+  pad.paint(targetColor, target);
 }
 
 function generateInitialSnake() {
@@ -124,8 +119,11 @@ Snake.padFunction = k => {
   }
 };
 
-Snake.init = (param) => {
-  pad = param;
+Snake.init = (pad) => {
+  pad = pad;
+  snakeColor = pad.colors.green;
+  snakeHeadColor = pad.colors.red;
+  targetColor = pad.colors.amber;
   initGame();
 }
 
