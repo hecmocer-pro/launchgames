@@ -23,6 +23,9 @@ const fn = {
   },
   launchGame: function(msg) {
     switch (msg) {
+      case 'freepaint':
+        pad.launch.freepaint();
+      break;
       case 'snake':
         pad.launch.snake();
         break;

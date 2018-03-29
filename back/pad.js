@@ -1,9 +1,11 @@
 "use strict";
 
 const Launchpad = require('launchpad-mini');
+const freepaint = require('./freepaint.js');
 const snake = require('./snake.js');
 // const simon = require('./simon-says.js');
 const launchpad = new Launchpad();
+const maps = require('./launchpadMaps.js');;
 const pad = {};
 
 /* Settings */
@@ -58,13 +60,21 @@ pad.reset = (val) => {
 
 /* Asigna el pulsar una tecla en el launchpad con la función del juego */
 launchpad.on('key', k => {
-  gamePadFunction(k);
+  gamePadFunction(k, launchpad.isPressed(k));
 });
 
 pad.launch = {
+  freepaint: () => {
+    pad.utils.clean();
+    freepaint.init(pad.utils);
+    gamePadFunction = freepaint.padFunction;
+  },
   snake: () => {
-    snake.init(pad.utils);
-    gamePadFunction = snake.padFunction;
+    // pad.utils.countdown(function() {
+    //   pad.utils.clean();
+    //   snake.init(pad.utils);
+    //   gamePadFunction = snake.padFunction;
+    // });
   },
   simon: () => {},
   fast: () => {},
@@ -82,10 +92,28 @@ pad.kill = {
 }
 
 pad.utils = {
+  fromMap: (param) => { launchpad.fromMap(param) },
   colors: {
     red: launchpad.red,
     green: launchpad.green,
     amber: launchpad.amber,
+    off: launchpad.off,
+    // +low +medium +full
+  },
+  countdown: function(callback) {
+    pad.utils.number(pad.utils.green, 3);
+    setTimeout(() => { pad.utils.number(pad.utils.ambar, 2); }, 1000);
+    setTimeout(() => { pad.utils.number(pad.utils.red, 1); }, 2000);
+    setTimeout(() => { callback(); }, 3000);
+  },
+  number(color, n) {
+    if ( n === 1) {
+      launchpad.col(pad.utils.colors.green, launchpad.fromMap(maps.one));
+    } else if ( n === 2) {
+      launchpad.col(pad.utils.colors.green, launchpad.fromMap(maps.two))
+    } else if ( n === 3) {
+      launchpad.col(pad.utils.colors.green, launchpad.fromMap(maps.three))
+    }
   },
   clean: function() {
     launchpad.reset(0);
@@ -112,6 +140,15 @@ pad.utils = {
   },
   paint: function(color, pair) {
     return launchpad.col(color, pair);
+  },
+  paintFromMap: function(color, map) {
+    return launchpad.col(color, launchpad.fromMap(map));
+  },
+  isRightControl: function(key) {
+    return key[0] === 8;
+  },
+  isLeftControl: function(key) {
+    return key[1] === 8;
   }
 }
 

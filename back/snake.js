@@ -1,7 +1,7 @@
 "use strict";
 
 let Snake = {};
-let pad
+let pad = {};
 
 // game Status
 let isPlaying = false;
@@ -119,8 +119,8 @@ Snake.padFunction = k => {
   }
 };
 
-Snake.init = (pad) => {
-  pad = pad;
+Snake.init = (padUtils) => {
+  pad = padUtils;
   snakeColor = pad.colors.green;
   snakeHeadColor = pad.colors.red;
   targetColor = pad.colors.amber;
