@@ -1,6 +1,7 @@
 body {
   margin: 0;
   --freepaint-color: #FFBF00;
+  --messenger-color: #73412F;
   --snake-color: #9493FE;
   --simon-says-color: #4ECDC4;
   --fast-color: #C7F464;
@@ -8,6 +9,7 @@ body {
   /* --chess-color: #C44D58; */
   
   --freepaint-color-transparency: rgba(255, 191, 0, .5);
+  --messenger-color-transparency: rgba(115, 65, 47, .5);
   --snake-color-transparency: rgba(148,147,254, .5);
   --simon-says-color-transparency: rgba(78,205,196, .5);
   --fast-color-transparency: rgba(199,244,100, .5);
@@ -66,6 +68,14 @@ body {
   background-color: var(--freepaint-color);
   border-color: #000;
 }
+.onboarding > ul > li > .openGame.messenger{
+  background-color: var(--messenger-color-transparency);
+  border-color: var(--messenger-color);
+}
+.onboarding > ul > li > .openGame.messenger:not([disabled]):hover{
+  background-color: var(--messenger-color);
+  border-color: #000;
+}
 .onboarding > ul > li > .openGame.snake{
   background-color: var(--snake-color-transparency);
   border-color: var(--snake-color);
@@ -108,6 +118,9 @@ body {
 }
 .game.freepaint {
   background-color: var(--freepaint-color);
+}
+.game.messenger {
+  background-color: var(--messenger-color);
 }
 .game.snake {
   background-color: var(--snake-color);
