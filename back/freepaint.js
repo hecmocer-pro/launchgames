@@ -2,15 +2,16 @@
 
 let painting = [];
 let palette = [];
-let color;
+let brushColor;
 let colorOff;
 let pad;
 let selectedColorKey = [8,7];
+let resetCheatCount = 0;
 
 const freepaint = {
   init: function(utils) {
     pad = utils;
-    color = pad.colors.red;
+    brushColor = pad.colors.red;
     colorOff = pad.colors.off;
     palette = [
       [pad.colors.red.low, [8, 0]],
@@ -28,16 +29,20 @@ const freepaint = {
     palette.forEach(function(item) {
       pad.paint(item[0], item[1]);
     });
+    pad.paint(brushColor, selectedColorKey);
   },
   padFunction: function(k, isPressed) {
     if (isPressed) {
       if (pad.isRightControl(k)) {
-        freepaint.setNewColor(k);
-      } else {
-        // si es el mismo color
-        /* BUSCAR UNA ESTRUCTURA DE DATOS QUE PERMITA ALOJA PARES key, color
-         * PARA PODER HACER BÚSQUEDA POR AMBOS Y OBTENER EL RESPECTIVO */
+        if (pad.isRightControl(k,6)) {
+          freepaint.log();
+        } else if (!pad.isRightControl(k,7)) {
+          freepaint.setNewColor(k);
+        }
+      } else if (!pad.isTopControl(k)) {
         freepaint.togglePaint(k);
+      } else {
+        freepaint.resetCheat();
       }
     }
   },
@@ -45,24 +50,41 @@ const freepaint = {
     const controlIndex = palette.findIndex(function(item) {
       return item[1][0] === k[0] && item[1][1] === k[1]
     });
-    color = palette[controlIndex][0];
-    pad.paint(color, selectedColorKey);
+    brushColor = palette[controlIndex][0];
+    pad.paint(brushColor, selectedColorKey);
   },
   togglePaint: function(k) {
-    const foundIndex = painting.findIndex((key) => key[0] === k[0] && key[1] === k[1]);
+    const foundIndex = painting.findIndex((key) => key[0][0] === k[0] && key[0][1] === k[1]);
     if (foundIndex < 0) {
       freepaint.addPaint(k);
+    } else if (painting[foundIndex][1] !== brushColor) {
+      freepaint.replace(k, foundIndex);
     } else {
       freepaint.removePaint(k, foundIndex);
     }
   },
+  log: function() {
+    console.log(painting.map(pair => [pair[0][0], pair[0][1]]));
+  },
+  resetCheat: function() {
+    resetCheatCount++;
+    if (resetCheatCount > 3) {
+      resetCheatCount = 0;
+      painting = [];
+      pad.cleanBoard();
+    }
+  },
   addPaint: function(k) {
-    painting.push(k);
-    pad.paint(color, k);
+    painting.push([k, brushColor]);
+    pad.paint(brushColor, k);
   },
   removePaint: function(k, index) {
     painting.splice(index, 1);
     pad.paint(colorOff, k);
+  },
+  replace: function(k, index) {
+    freepaint.removePaint(k, index);
+    freepaint.addPaint(k);
   }
 }
 

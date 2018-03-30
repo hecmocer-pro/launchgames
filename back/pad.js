@@ -6,6 +6,7 @@ const snake = require('./snake.js');
 // const simon = require('./simon-says.js');
 const launchpad = new Launchpad();
 const maps = require('./launchpadMaps.js');;
+const lists = require('./launchpadLists.js');;
 const pad = {};
 
 /* Settings */
@@ -65,13 +66,15 @@ launchpad.on('key', k => {
 
 pad.launch = {
   freepaint: () => {
-    pad.utils.clean();
-    freepaint.init(pad.utils);
-    gamePadFunction = freepaint.padFunction;
+    pad.utils.countdown(function() {
+      pad.utils.cleanAll();
+      freepaint.init(pad.utils);
+      gamePadFunction = freepaint.padFunction;
+    })
   },
   snake: () => {
     // pad.utils.countdown(function() {
-    //   pad.utils.clean();
+    //   pad.utils.cleanAll();
     //   snake.init(pad.utils);
     //   gamePadFunction = snake.padFunction;
     // });
@@ -101,25 +104,26 @@ pad.utils = {
     // +low +medium +full
   },
   countdown: function(callback) {
-    pad.utils.number(pad.utils.green, 3);
-    setTimeout(() => { pad.utils.number(pad.utils.ambar, 2); }, 1000);
-    setTimeout(() => { pad.utils.number(pad.utils.red, 1); }, 2000);
-    setTimeout(() => { callback(); }, 3000);
+    pad.utils.cleanAll();
+    pad.utils.number(pad.utils.colors.green, 3);
+    setTimeout(() => { pad.utils.cleanAll(); pad.utils.number(pad.utils.colors.amber, 2); }, 1000);
+    setTimeout(() => { pad.utils.cleanAll(); pad.utils.number(pad.utils.colors.red, 1); }, 2000);
+    setTimeout(() => { pad.utils.cleanAll(); callback(); }, 3000);
   },
   number(color, n) {
     if ( n === 1) {
-      launchpad.col(pad.utils.colors.green, launchpad.fromMap(maps.one));
+      launchpad.col(color, lists.one);
     } else if ( n === 2) {
-      launchpad.col(pad.utils.colors.green, launchpad.fromMap(maps.two))
+      launchpad.col(color, lists.two);
     } else if ( n === 3) {
-      launchpad.col(pad.utils.colors.green, launchpad.fromMap(maps.three))
+      launchpad.col(color, lists.three);
     }
   },
-  clean: function() {
+  cleanAll: function() {
     launchpad.reset(0);
   },
-  getSideControls: function() {
-
+  cleanBoard: function() {
+    launchpad.col(pad.utils.colors.off, launchpad.fromMap(maps.board))
   },
   getBoardFull: function() {
     let board = [];
@@ -144,10 +148,14 @@ pad.utils = {
   paintFromMap: function(color, map) {
     return launchpad.col(color, launchpad.fromMap(map));
   },
-  isRightControl: function(key) {
-    return key[0] === 8;
+  isRightControl: function(key, index) {
+    let isRightControl = key[0] === 8;
+    if (index >= 0) {
+      isRightControl = isRightControl && key[1] === index;
+    }
+    return isRightControl;
   },
-  isLeftControl: function(key) {
+  isTopControl: function(key) {
     return key[1] === 8;
   }
 }

@@ -17,7 +17,7 @@ let snakeHeadColor;
 let targetColor;
 
 let initGame = function(){
-  pad.clean();
+  pad.cleanAll();
   isPlaying = true;
   currentLevel = 1;
   generateInitialSnake();
@@ -75,7 +75,7 @@ function checkIfTarget() {
 }
 
 function paint(){
-  pad.clean();
+  pad.cleanAll();
   snake.forEach((pair, index) => {
     pad.paint(snakeColor, pair);
   });
