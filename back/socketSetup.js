@@ -26,6 +26,9 @@ const fn = {
       case 'freepaint':
         pad.launch.freepaint();
       break;
+      case 'messenger':
+        pad.launch.messenger();
+      break;
       case 'snake':
         pad.launch.snake();
         break;
@@ -44,6 +47,12 @@ const fn = {
   },
   killGame: function(msg) { 
     switch (msg) {
+      case 'freepaint':
+        pad.kill.freepaint();
+        break;
+      case 'messenger':
+        pad.kill.messenger();
+        break;
       case 'snake':
         pad.kill.snake();
         break;

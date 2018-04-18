@@ -6,8 +6,8 @@ const messenger = require('./messenger.js');
 const snake = require('./snake.js');
 // const simon = require('./simon-says.js');
 const launchpad = new Launchpad();
-const maps = require('./launchpadMaps.js');;
-const lists = require('./launchpadLists.js');;
+const maps = require('./launchpadMaps.js');
+const lists = require('./launchpadLists.js');
 const pad = {};
 
 /* Settings */
@@ -74,11 +74,11 @@ pad.launch = {
     })
   },
   messenger: () => {
-    pad.utils.countdown(function() {
+    // pad.utils.countdown(function() {
       pad.utils.cleanAll();
       messenger.init(pad.utils);
-      gamePadFunction = () => {};
-    })
+      gamePadFunction = messenger.padFunction;
+    // })
   },
   snake: () => {
     // pad.utils.countdown(function() {
@@ -169,8 +169,12 @@ pad.utils = {
     }
     return isRightControl;
   },
-  isTopControl: function(key) {
-    return key[1] === 8;
+  isTopControl: function(key, index) {
+    let isTopControl = key[1] === 8;
+    if (index >= 0) {
+      isTopControl = isTopControl && key[0] === index;
+    }
+    return isTopControl;
   }
 }
 
