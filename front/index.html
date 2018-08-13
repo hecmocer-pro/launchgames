@@ -9,6 +9,7 @@
   </head>
   <body>
 
+    <!-- LANDING -->
     <div class="onboarding">
       <h2 class="heading">Choose a game 😁🎮</h2>
       <ul>
@@ -28,7 +29,7 @@
             <span>SNAKE</span>
           </button>
         </li>
-        <li>
+        <!-- <li>
           <button class="openGame simonSays WIP" disabled data-game="simon">
             <span>SIMON SAYS</span>
           </button>
@@ -42,19 +43,61 @@
           <button class="openGame minesweeper WIP" disabled data-game="minesweeper">
             <span>Minesweeper</span>
           </button>
-        </li>
+        </li> -->
       </ul>
     </div>
 
-
-    <div class="game freepaint hidden" data-game="freepaint">
-      <button class="closeGame" data-game="freepaint">CLOSE</button>
+    <!-- FREEPAINT -->
+    <div class="game freepaint game-container hidden" data-game="freepaint">
+        <div class="game-instruction">
+            <div class="instruction-title">Instructions</div>
+            <div class="instruction-body">
+              <ul>
+                <li>Press a 8x8 square to paint</li>
+                <li>Press a side button to change color</li>
+              </ul>
+              <hr>
+              <ul>
+                <li>The current color is shown on the bottom side button </li>
+              </ul>
+            </div>
+          </div>
+      <button class="closeGame game-closeBtn" data-game="freepaint">CLOSE</button>
     </div>
-    <div class="game messenger hidden" data-game="messenger">
-        <button class="closeGame" data-game="messenger">CLOSE</button>
+    <!-- MESSENGER -->
+    <div class="game messenger game-container hidden" data-game="messenger">
+      <div class="game-instruction">
+        <div class="instruction-title">Instructions</div>
+        <div class="instruction-body">
+          <ul>
+            <li>Type something</li>
+            <li>Adjust the speed</li>
+          </ul>
+          <hr>
+          <ul>
+            <li>The launchpad will display the text!</li>
+          </ul>
+        </div>
+      </div>
+      <div class="messenger-container">
+        <textarea id="messenger-textarea" class="messenger-textarea" cols="30" rows="2"></textarea>
+        <div class="messenger-control-container">
+          <button class="messenger-btn" id="messenger-speedDown10">-10</button>
+          <button class="messenger-btn" id="messenger-speedDown">-1</button>
+          <div class="messenger-speed-container">Speed <span id="messenger-speed"></span></div>
+          <button class="messenger-btn" id="messenger-speedUp">+1</button>
+          <button class="messenger-btn" id="messenger-speedUp10">+10</button>
+        </div>
+        <div class="messenger-control-container">
+          <button class="messenger-btn" id="messenger-apply">APPLY</button>
+        </div>
+      </div>
+      <button class="closeGame game-closeBtn" data-game="messenger">CLOSE</button>
+      <script src="./messenger.js"></script>
     </div>
+    <!-- SNAKE -->
     <div class="game snake hidden" data-game="snake">
-      <button class="closeGame" data-game="snake">CLOSE</button>
+      <button class="closeGame game-closeBtn" data-game="snake">CLOSE</button>
     </div>
 
     <div id="toastSlot"></div>

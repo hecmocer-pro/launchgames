@@ -7,7 +7,7 @@ const socketSetup = {};
 socketSetup.initSocket = function(socketB) {
   socketB.on('Connect Launchpad', () => fn.connectLaunchpad(socketB));
   socketB.on('Disconnect Launchpad', () => fn.disconnectLaunchpad(socketB));
-  socketB.on('Launch game', (msg) => fn.launchGame(msg));
+  socketB.on('Launch game', (msg) => fn.launchGame(msg, socketB));
   socketB.on('Kill game', (msg) => fn.killGame(msg));
 
   console.log('Socket escuchando y configurado en back');
@@ -21,13 +21,13 @@ const fn = {
   disconnectLaunchpad: function(socketB) {
     pad.disconnect(socketB);
   },
-  launchGame: function(msg) {
+  launchGame: function(msg, socketB) {
     switch (msg) {
       case 'freepaint':
         pad.launch.freepaint();
       break;
       case 'messenger':
-        pad.launch.messenger();
+        pad.launch.messenger(socketB);
       break;
       case 'snake':
         pad.launch.snake();

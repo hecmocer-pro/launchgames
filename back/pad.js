@@ -73,10 +73,10 @@ pad.launch = {
       gamePadFunction = freepaint.padFunction;
     })
   },
-  messenger: () => {
+  messenger: (socketB) => {
     // pad.utils.countdown(function() {
       pad.utils.cleanAll();
-      messenger.init(pad.utils);
+      messenger.init(pad.utils, socketB);
       gamePadFunction = messenger.padFunction;
     // })
   },

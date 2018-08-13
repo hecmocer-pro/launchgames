@@ -1,19 +1,19 @@
 body {
   margin: 0;
   --freepaint-color: #FFBF00;
-  --messenger-color: #73412F;
+  --messenger-color: #FF6B6B;
   --snake-color: #9493FE;
   --simon-says-color: #4ECDC4;
   --fast-color: #C7F464;
-  --minesweeper-color: #FF6B6B;
+  --minesweeper-color: #73412F;
   /* --chess-color: #C44D58; */
   
   --freepaint-color-transparency: rgba(255, 191, 0, .5);
-  --messenger-color-transparency: rgba(115, 65, 47, .5);
+  --messenger-color-transparency: rgba(255,107,107, .5);
   --snake-color-transparency: rgba(148,147,254, .5);
   --simon-says-color-transparency: rgba(78,205,196, .5);
   --fast-color-transparency: rgba(199,244,100, .5);
-  --minesweeper-color-transparency: rgba(255,107,107, .5);
+  --minesweeper-color-transparency: rgba(115, 65, 47, .5);
   /* --chess-color-transparency: rgba(196,77,88, .5); */
 }
 
@@ -115,6 +115,9 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .game.freepaint {
   background-color: var(--freepaint-color);
@@ -134,6 +137,85 @@ body {
 .game.minesweeper {
   background-color: var(--minesweeper-color);
 }
+
+/* <NEW> */
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.game-closeBtn {
+  font-size: 2rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  font-family: monospace;
+  padding: 10px 300px;
+  border-radius: 5px;
+  transition: box-shadow 100ms;
+  cursor: pointer;
+}
+.game-closeBtn:hover {
+  box-shadow: 4px 3px 20px rgba(0,0,0,0.7);
+}
+.messenger-container {
+  padding: 40px;
+  margin-bottom: 50px;
+  border-radius: 5px;
+  box-shadow: 7px 7px 30px rgba(0,0,0,0.3);
+  background: white;
+}
+.messenger-control-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.messenger-btn {
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  border: solid 1px;
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.messenger-btn:hover {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.messenger-textarea {
+  font-size: 3rem;
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+}
+.messenger-textarea:hover {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+.messenger-speed-container{
+  text-align: center;
+}
+.game-instruction {
+  width: 400px;
+  margin-bottom: 50px;
+  background: white;
+  padding: 20px 25px;
+  border-radius: 5px;
+  box-shadow: 7px 7px 30px rgba(0,0,0,0.3);
+}
+.instruction-title {
+  font-size: 2rem;
+}
+.instruction-body {
+
+}
+/* </NEW> */
 
 .hidden {
   display: none;
@@ -203,12 +285,5 @@ body {
 }
 
 .closeGame{
-  border: solid 1px turquoise;
-  background-color: paleturquoise;
-  width: 40%;
-  margin: 30%;
-  height: 75px;
-  padding: 20px;
-  font-family: monospace;
-  font-size: 26px;
+  /* ESTA CLASE SOLO SIRVE PARA JS */
 }
