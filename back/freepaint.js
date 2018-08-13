@@ -19,7 +19,8 @@ const freepaint = {
       [pad.colors.green.low, [8, 2]],
       [pad.colors.green.full, [8, 3]],
       [pad.colors.amber.low, [8, 4]],
-      [pad.colors.amber.full, [8, 5]]
+      [pad.colors.amber.full, [8, 5]],
+      [pad.colors.off, [8, 6]]
       // [pad.colors.yellow.low, [8, 6]],
       // [pad.colors.yellow.full, [8, 7]]
     ];
@@ -35,14 +36,14 @@ const freepaint = {
     if (isPressed) {
       if (pad.isRightControl(k)) {
         if (pad.isRightControl(k,6)) {
-          freepaint.log();
+          freepaint.setNewColor(k); 
+          freepaint.log(); // logs the painting coordinates
+          freepaint.resetCheat(); // three times in a row cleans the board
         } else if (!pad.isRightControl(k,7)) {
           freepaint.setNewColor(k);
         }
       } else if (!pad.isTopControl(k)) {
         freepaint.togglePaint(k);
-      } else {
-        freepaint.resetCheat();
       }
     }
   },
