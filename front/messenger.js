@@ -6,13 +6,17 @@
   const btnSpeedUp10 = document.querySelector('#messenger-speedUp10');
   const spanSpeed = document.querySelector('#messenger-speed');
   const btnApply = document.querySelector('#messenger-apply');
-  let speed = 50;
+  const btnLoop = document.querySelector('#messenger-loop');
+  
   const maxSpeed = 200;
   const minSpeed = 1;
+  let speed = 50;
   let text = 'lorem ipsum';
+  let loop = false;
 
   textarea.value = text;
   updateSpeed(speed);
+  updateLoop(loop);
 
 
   btnSpeedUp.addEventListener('click', function() {
@@ -30,6 +34,9 @@
   btnApply.addEventListener('click', function() {
     applyChanges();
   });
+  btnLoop.addEventListener('click', function() {
+    updateLoop(!loop);
+  });
 
   function updateSpeed(newVal) {
     if (newVal > minSpeed && newVal < maxSpeed) {
@@ -39,11 +46,16 @@
     }
     spanSpeed.innerHTML = speed;
   }
+  function updateLoop(newVal) {
+    loop = newVal;
+    btnLoop.innerHTML = `LOOP ${loop ? '✓' : '✖'}`;
+  }
 
   function applyChanges() {
     socketF.emit('Messenger update', {
       text: textarea.value,
-      speed: maxSpeed - speed
+      speed: maxSpeed - speed,
+      loop: loop,
     });
   }
   // input.addEventListener('onchange', function(){

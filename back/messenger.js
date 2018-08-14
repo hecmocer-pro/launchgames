@@ -20,9 +20,13 @@ const messenger = {
     //   console.log(speed);
     // }
   },
-  speakThis: function({speed, text}) {
+  speakThis: function({speed, text, loop}) {
     messenger.stopCurrentSentence();
-    messenger.saySentence(text, speed);
+    if (!loop) {
+      messenger.saySentence(text, speed);
+    } else {
+      messenger.saySentenceLoop(text, speed);
+    }
   },
   stopCurrentSentence: function() {
     sentenceLoop && clearTimeout(sentenceLoop);
@@ -30,6 +34,11 @@ const messenger = {
   saySentence: function(sentence, speed, callback) {
     const sentenceMap = messenger.mapSentence(sentence);
     messenger.paintSentence(sentenceMap, speed, 0, 8 + sentence.length * 4, callback);
+  },
+  saySentenceLoop:  function(sentence, speed) {
+    messenger.saySentence(sentence, speed, function() {
+      messenger.saySentenceLoop(sentence, speed);
+    });
   },
   mapSentence: function(sentence) {
     const sentenceMap = [];
@@ -39,7 +48,7 @@ const messenger = {
     return sentenceMap;
   },
   mapChar: function(char, position) {
-    return lists[char].map(function(pair) {
+    return lists[char.charCodeAt(0)].map(function(pair) {
       const newX = pair[0] + (position * 4);
       return [newX, pair[1] + height];
     });

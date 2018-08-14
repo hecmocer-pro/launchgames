@@ -188,6 +188,9 @@ body {
   border-color: #c3e6cb;
   color: #155724;
 }
+.messenger-btn-loop {
+  width: 120px;
+}
 .messenger-textarea {
   font-size: 3rem;
   color: #004085;
@@ -201,6 +204,9 @@ body {
 }
 .messenger-speed-container{
   text-align: center;
+}
+.messenger-speed-indicator {
+  font-size: 24px;
 }
 .game-instruction {
   width: 400px;
