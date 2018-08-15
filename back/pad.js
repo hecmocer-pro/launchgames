@@ -126,11 +126,11 @@ pad.utils = {
   },
   number(color, n) {
     if ( n === 1) {
-      launchpad.col(color, lists.one);
+      launchpad.col(color, lists[49]);
     } else if ( n === 2) {
-      launchpad.col(color, lists.two);
+      launchpad.col(color, lists[50]);
     } else if ( n === 3) {
-      launchpad.col(color, lists.three);
+      launchpad.col(color, lists[51]);
     }
   },
   cleanAll: function() {
