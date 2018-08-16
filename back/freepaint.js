@@ -1002,7 +1002,8 @@ const displayanimation = [ { time: 1797,
 
 
 const freepaint = {
-  init: function(utils) {
+  init: function(utils, socketB) {
+    socketB.on('Freepaint update', (sequence) => freepaint.paintAnimation(sequence.sequence));
     startTime = new Date();
     pad = utils;
     brushColor = pad.colors.red;
@@ -1019,7 +1020,7 @@ const freepaint = {
       // [pad.colors.yellow.full, [8, 7]]
     ];
     freepaint.paintPalette();
-    freepaint.paintAnimation(displayanimation);
+    // freepaint.paintAnimation(displayanimation);
   },
   paintPalette: function() {
     palette.forEach(function(item) {
@@ -1028,9 +1029,12 @@ const freepaint = {
     pad.paint(brushColor, selectedColorKey);
   },
   paintAnimation: function(chosenAnimation) {
+    console.log(chosenAnimation);
     chosenAnimation.forEach(function(item) {
+      console.log(item);
       setTimeout(() => {
-        pad.paint(pad.colors[item.color], item.k);
+        console.log('paint');
+        pad.paint(pad.colors[item.color], { 0: item.x, 1: item.y, x: item.x, y: item.y, isPressed: true});
       }, item.time);
     });
   },

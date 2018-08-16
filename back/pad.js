@@ -66,12 +66,12 @@ launchpad.on('key', k => {
 });
 
 pad.launch = {
-  freepaint: () => {
-    pad.utils.countdown(function() {
+  freepaint: (socketB) => {
+    // pad.utils.countdown(function() {
       pad.utils.cleanAll();
-      freepaint.init(pad.utils);
+      freepaint.init(pad.utils, socketB);
       gamePadFunction = freepaint.padFunction;
-    })
+    // })
   },
   messenger: (socketB) => {
     // pad.utils.countdown(function() {

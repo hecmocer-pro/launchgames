@@ -24,7 +24,7 @@ const fn = {
   launchGame: function(msg, socketB) {
     switch (msg) {
       case 'freepaint':
-        pad.launch.freepaint();
+        pad.launch.freepaint(socketB);
       break;
       case 'messenger':
         pad.launch.messenger(socketB);

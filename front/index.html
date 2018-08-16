@@ -49,20 +49,38 @@
 
     <!-- FREEPAINT -->
     <div class="game freepaint game-container hidden" data-game="freepaint">
-        <div class="game-instruction">
-            <div class="instruction-title">Instructions</div>
-            <div>
-              <ul>
-                <li>Press a 8x8 square to paint</li>
-                <li>Press a side button to change color</li>
-              </ul>
-              <hr>
-              <ul>
-                <li>The current color is shown in the bottom side button </li>
-              </ul>
-            </div>
-          </div>
+      <div class="game-instruction">
+        <div class="instruction-title">Instructions</div>
+        <div>
+          <ul>
+            <li>Press a 8x8 square to paint</li>
+            <li>Press a side button to change color</li>
+          </ul>
+          <hr>
+          <ul>
+            <li>The current color is shown in the bottom side button </li>
+          </ul>
+        </div>
+      </div>
+      <div class="game-input-container">
+        <div class="game-control-container">
+            <div><input type="text" class="freepaint-input freepaint-input-xs" id="freepaint-x" placeholder="x"></div>
+            <div><input type="text" class="freepaint-input freepaint-input-xs" id="freepaint-y" placeholder="y"></div>
+            <div><input type="text" class="freepaint-input freepaint-input-sm" id="freepaint-time" placeholder="time"></div>
+            <div><input type="text" class="freepaint-input freepaint-input-md" id="freepaint-color" placeholder="color"></div>
+            <button id="freepaint-add" class="game-btn">ADD</button>
+        </div>
+        <pre id="freepaint-sequence" class="game-code" contenteditable="true"></pre>
+        <div class="game-control-container">
+          <button class="game-btn" id="freepaint-apply">APPLY</button>
+          <button class="game-btn game-btn-loop" id="freepaint-loop">LOOP</button>
+        </div>
+        <div class="game-control-container">
+          <button class="game-btn" id="freepaint-save">SAVE</button>
+        </div>
+      </div>
       <button class="closeGame game-closeBtn" data-game="freepaint"><img class="backbutton" src="icon.png"></img></button>
+      <script src="./freepaint.js"></script>
     </div>
     <!-- MESSENGER -->
     <div class="game messenger game-container hidden" data-game="messenger">
@@ -79,18 +97,18 @@
           </ul>
         </div>
       </div>
-      <div class="messenger-container">
+      <div class="game-input-container">
         <textarea id="messenger-textarea" class="messenger-textarea" cols="30" rows="2"></textarea>
-        <div class="messenger-control-container">
-          <button class="messenger-btn" id="messenger-speedDown10">-10</button>
-          <button class="messenger-btn" id="messenger-speedDown">-1</button>
+        <div class="game-control-container">
+          <button class="game-btn" id="messenger-speedDown10">-10</button>
+          <button class="game-btn" id="messenger-speedDown">-1</button>
           <div class="messenger-speed-container">Speed <span id="messenger-speed" class="messenger-speed-indicator"></span></div>
-          <button class="messenger-btn" id="messenger-speedUp">+1</button>
-          <button class="messenger-btn" id="messenger-speedUp10">+10</button>
+          <button class="game-btn" id="messenger-speedUp">+1</button>
+          <button class="game-btn" id="messenger-speedUp10">+10</button>
         </div>
-        <div class="messenger-control-container">
-          <button class="messenger-btn" id="messenger-apply">APPLY</button>
-          <button class="messenger-btn messenger-btn-loop" id="messenger-loop">LOOP</button>
+        <div class="game-control-container">
+          <button class="game-btn" id="messenger-apply">APPLY</button>
+          <button class="game-btn game-btn-loop" id="messenger-loop">LOOP</button>
         </div>
       </div>
       <button class="closeGame game-closeBtn" data-game="messenger"><img class="backbutton" src="icon.png"></img></button>
