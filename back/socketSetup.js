@@ -26,6 +26,9 @@ const fn = {
       case 'freepaint':
         pad.launch.freepaint(socketB);
       break;
+      case 'animations':
+        pad.launch.animations(socketB);
+      break;
       case 'messenger':
         pad.launch.messenger(socketB);
       break;
