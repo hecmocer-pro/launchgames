@@ -1,13 +1,13 @@
 (function() {
-  const x = document.querySelector('#freepaint-x');
-  const y = document.querySelector('#freepaint-y');
-  const time = document.querySelector('#freepaint-time');
-  const color = document.querySelector('#freepaint-color');
-  const add = document.querySelector('#freepaint-add');
-  const apply = document.querySelector('#freepaint-apply');
-  const btnLoop = document.querySelector('#freepaint-loop');
-  const save = document.querySelector('#freepaint-save');
-  const sequenceOutput = document.querySelector('#freepaint-sequence');
+  const x = document.querySelector('#animations-x');
+  const y = document.querySelector('#animations-y');
+  const time = document.querySelector('#animations-time');
+  const color = document.querySelector('#animations-color');
+  const add = document.querySelector('#animations-add');
+  const apply = document.querySelector('#animations-apply');
+  const btnLoop = document.querySelector('#animations-loop');
+  const save = document.querySelector('#animations-save');
+  const sequenceOutput = document.querySelector('#animations-sequence');
 
   let loop = false;
   const sequence = [];
@@ -28,7 +28,7 @@
   });
 
   apply.addEventListener('click', function () {
-    socketF.emit('Freepaint update', {
+    socketF.emit('Animations update', {
       sequence: JSON.parse(sequenceOutput.innerHTML),
       loop: true,
     });

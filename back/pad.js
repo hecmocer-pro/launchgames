@@ -64,6 +64,9 @@ pad.reset = (val) => {
 /* Asigna el pulsar una tecla en el launchpad con la función del juego */
 launchpad.on('key', k => {
   gamePadFunction(k, launchpad.isPressed(k));
+  if (pad.utils.isRightControl(k) && pad.utils.isActivePallete) {
+    pad.utils.setNewColor(k);
+  }
 });
 
 pad.launch = {
@@ -128,6 +131,33 @@ pad.utils = {
     off: launchpad.off,
     // +low +medium +full
   },
+  brushColor: launchpad.red,
+  colorOff: launchpad.off,
+  selectedColorKey: [8,7],
+  isActivePallete: false,
+  palette: [
+    [launchpad.red.low, [8, 0]],
+    [launchpad.red.full, [8, 1]],
+    [launchpad.green.low, [8, 2]],
+    [launchpad.green.full, [8, 3]],
+    [launchpad.amber.low, [8, 4]],
+    [launchpad.amber.full, [8, 5]],
+    [launchpad.off, [8, 6]]
+  ],
+  paintPalette: function() {
+    pad.utils.isActivePallete = true;
+    pad.utils.palette.forEach(function(item) {
+      pad.utils.paint(item[0], item[1]);
+    });
+    pad.utils.paint(pad.utils.brushColor, pad.utils.selectedColorKey);
+  },
+  setNewColor: function(k) {
+    const controlIndex = pad.utils.palette.findIndex(function(item) {
+      return item[1][0] === k[0] && item[1][1] === k[1]
+    });
+    pad.utils.brushColor = pad.utils.palette[controlIndex][0];
+    pad.utils.paint(pad.utils.brushColor, pad.utils.selectedColorKey);
+  },
   countdown: function(callback) {
     pad.utils.cleanAll();
     pad.utils.number(pad.utils.colors.green, 3);
@@ -145,6 +175,7 @@ pad.utils = {
     }
   },
   cleanAll: function() {
+    pad.utils.isActivePallete = false;
     launchpad.reset(0);
   },
   cleanBoard: function() {

@@ -5,7 +5,7 @@ let startTime;
 
 const animations = {
   init: function(utils, socketB) {
-    socketB.on('Animation update', (id) => animations.paintAnimation(id));
+    socketB.on('Animations update', (animation) => animations.paintAnimation(animation.sequence));
     startTime = new Date();
     pad = utils;
     pad.paintPalette();
@@ -19,17 +19,25 @@ const animations = {
       animation.push({
         time: timeDiff,
         k: k,
-        color: brushColor._name
+        color: pad.brushColor._name
       });
 
-      animations.paintAnimation(k);
+      animationId = (k[0] * 8) + k[1];
+
+      animations.paintAnimationById(animationId);
     }
   },
-  paintAnimation: function(id) {
-    pad.cleanBoard();
+  paintAnimationById: function(id) {
     // LOOK FOR ANIMATION AT FILE by ID
-    /* chosenAnimation = animationDictionary[id] */
-    chosenAnimation.forEach(function(item) {
+    /*
+    literalAnimation = animationDictionary[id]
+    paintAnimation(literalAnimation)
+    */
+  },
+  paintAnimation: function(literalAnimation) {
+    pad.cleanBoard();
+    console.log(literalAnimation);
+    literalAnimation.forEach(function(item) {
       setTimeout(() => {
         pad.paint(pad.colors[item.color], [Number(item.x), Number(item.y)]);
       }, item.time);

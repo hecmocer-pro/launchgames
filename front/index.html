@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Launchgames</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="./styles.css">
@@ -24,11 +24,10 @@
           </button>
         </li>
         <li>
-            <button class="openGame messenger" data-game="messenger">
-              <span>MESSENGER</span>
-            </button>
-          </li>
-        <li>
+          <button class="openGame messenger" data-game="messenger">
+            <span>MESSENGER</span>
+          </button>
+        </li>
         <li>
           <button class="openGame snake" data-game="snake">
             <span>SNAKE</span>
@@ -64,33 +63,48 @@
           <hr>
           <ul>
             <li>The current color is shown in the bottom side button </li>
+            <li>Press the <i>off</i> color 3 times to clean the board </li>
           </ul>
         </div>
       </div>
-      <div class="game-input-container">
-        <div class="game-control-container">
-            <div><input type="text" class="freepaint-input freepaint-input-xs" id="freepaint-x" placeholder="x"></div>
-            <div><input type="text" class="freepaint-input freepaint-input-xs" id="freepaint-y" placeholder="y"></div>
-            <div><input type="text" class="freepaint-input freepaint-input-sm" id="freepaint-time" placeholder="time"></div>
-            <div><input type="text" class="freepaint-input freepaint-input-md" id="freepaint-color" placeholder="color"></div>
-            <button id="freepaint-add" class="game-btn">ADD</button>
-        </div>
-        <pre id="freepaint-sequence" class="game-code" contenteditable="true"></pre>
-        <div class="game-control-container">
-          <button class="game-btn" id="freepaint-apply">APPLY</button>
-          <button class="game-btn game-btn-loop" id="freepaint-loop">LOOP</button>
-        </div>
-        <div class="game-control-container">
-          <button class="game-btn" id="freepaint-save">SAVE</button>
-        </div>
-      </div>
       <button class="closeGame game-closeBtn" data-game="freepaint"><img class="backbutton" src="icon.png"></img></button>
-      <script src="./freepaint.js"></script>
     </div>
     <!-- ANIMATIONS -->
     <div class="game animations game-container hidden" data-game="animations">
+        <div class="game-instruction">
+          <div class="instruction-title">Instructions</div>
+          <div>
+            <ul>
+              <li>Edit a custom animation</li>
+              <li>Try it out with the apply button</li>
+              <li>Save it to a .txt file to be able to paste it back later</li>
+            </ul>
+            <hr>
+            <ul>
+              <li>The launchpad has some predefined animations built in</li>
+              <li>Trigger an animation by tapping on a 8x8 square</li>
+            </ul>
+          </div>
+        </div>
+        <div class="game-input-container">
+          <div class="game-control-container">
+              <div><input type="text" class="animations-input animations-input-xs" id="animations-x" placeholder="x"></div>
+              <div><input type="text" class="animations-input animations-input-xs" id="animations-y" placeholder="y"></div>
+              <div><input type="text" class="animations-input animations-input-sm" id="animations-time" placeholder="time"></div>
+              <div><input type="text" class="animations-input animations-input-md" id="animations-color" placeholder="color"></div>
+              <button id="animations-add" class="game-btn">ADD</button>
+          </div>
+          <pre id="animations-sequence" class="game-code" contenteditable="true"></pre>
+          <div class="game-control-container">
+            <button class="game-btn" id="animations-apply">APPLY</button>
+            <button class="game-btn game-btn-loop" id="animations-loop">LOOP</button>
+          </div>
+          <div class="game-control-container">
+            <button class="game-btn" id="animations-save">SAVE</button>
+          </div>
+        </div>
       <button class="closeGame game-closeBtn" data-game="animations"><img class="backbutton" src="icon.png"></img></button>
-      <!-- <script src="./animations.js"></script> -->
+      <script src="./animations.js"></script>
     </div>
     <!-- MESSENGER -->
     <div class="game messenger game-container hidden" data-game="messenger">
