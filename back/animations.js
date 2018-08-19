@@ -2,6 +2,8 @@
 
 let pad;
 let startTime;
+let liveAnimation = [];
+let animationDictionary = require('./animationDictionary.js');
 
 const animations = {
   init: function(utils, socketB) {
@@ -16,30 +18,28 @@ const animations = {
       /* https://stackoverflow.com/a/41633001 */
       const pressedTime = new Date();
       let timeDiff = pressedTime - startTime; //in ms
-      animation.push({
+      liveAnimation.push({
         time: timeDiff,
         k: k,
         color: pad.brushColor._name
       });
 
-      animationId = (k[0] * 8) + k[1];
+      let animationId = (k[0] * 8) + k[1];
 
       animations.paintAnimationById(animationId);
     }
   },
   paintAnimationById: function(id) {
-    // LOOK FOR ANIMATION AT FILE by ID
-    /*
-    literalAnimation = animationDictionary[id]
-    paintAnimation(literalAnimation)
-    */
+    const chosenAnimation = animationDictionary[id];
+    if (chosenAnimation) {
+      animations.paintAnimation(animationDictionary[id]);
+    }
   },
   paintAnimation: function(literalAnimation) {
     pad.cleanBoard();
-    console.log(literalAnimation);
     literalAnimation.forEach(function(item) {
       setTimeout(() => {
-        pad.paint(pad.colors[item.color], [Number(item.x), Number(item.y)]);
+        pad.paint(pad.brushColor, [Number(item.x), Number(item.y)]);
       }, item.time);
     });
   }
