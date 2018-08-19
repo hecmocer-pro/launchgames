@@ -1,5 +1,8 @@
 "use strict"
 
+let pad;
+let startTime;
+
 const animations = {
   init: function(utils, socketB) {
     socketB.on('Animation update', (id) => animations.paintAnimation(id));
