@@ -27,7 +27,7 @@ const animations = {
       //   color: pad.brushColor._name
       // });
 
-      let animationId = (k[0] * 8) + k[1];
+      let animationId = k[0] + (k[1] * 8);
 
       animations.paintAnimationById(animationId);
     }
@@ -48,7 +48,7 @@ const animations = {
     literalAnimation.forEach(function(item, index) {
       liveAnimationTimesout.push(setTimeout(() => {
         pad.paint(pad.brushColor, [Number(item.x), Number(item.y)]);
-      }, pad.speed * index));
+      }, pad.speed * item.delay));
     })
   },
   cleanAnimation: function() {
