@@ -1019,7 +1019,7 @@ const freepaint = {
       // [pad.colors.yellow.low, [8, 6]],
       // [pad.colors.yellow.full, [8, 7]]
     ];
-    freepaint.paintPalette();
+    // freepaint.paintPalette();
     // freepaint.paintAnimation(displayanimation);
   },
   paintPalette: function() {
@@ -1029,12 +1029,10 @@ const freepaint = {
     pad.paint(brushColor, selectedColorKey);
   },
   paintAnimation: function(chosenAnimation) {
-    console.log(chosenAnimation);
+    pad.cleanBoard();
     chosenAnimation.forEach(function(item) {
-      console.log(item);
       setTimeout(() => {
-        console.log('paint');
-        pad.paint(pad.colors[item.color], { 0: item.x, 1: item.y, x: item.x, y: item.y, isPressed: true});
+        pad.paint(pad.colors[item.color], [Number(item.x), Number(item.y)]);
       }, item.time);
     });
   },

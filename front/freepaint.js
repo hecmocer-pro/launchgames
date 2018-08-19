@@ -21,7 +21,7 @@
     const yValue = y.value;
     const timeValue = time.value;
     const colorValue = color.value.toLowerCase();
-    if (xValue >= 0 && yValue >= 0 && timeValue >= 0 && (colorValue == 'orange' || colorValue == 'red' || colorValue == 'green')){
+    if (xValue >= 0 && yValue >= 0 && timeValue >= 0 && (colorValue == 'amber' || colorValue == 'red' || colorValue == 'green')){
       _updateSequence();
       // _cleanInputs();
     }
