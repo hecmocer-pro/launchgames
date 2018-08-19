@@ -2,7 +2,9 @@
 
 let pad;
 let startTime;
-let liveAnimation = [];
+let liveAnimationRecord = [];
+let liveAnimationTimesout = [];
+let preservePainting = false;
 let animationDictionary = require('./animationDictionary.js');
 
 const animations = {
@@ -11,6 +13,7 @@ const animations = {
     startTime = new Date();
     pad = utils;
     pad.paintPalette();
+    pad.initSpeed();
   },
   padFunction: function(k, isPressed) {
     if (isPressed && !pad.isTopControl(k) && !pad.isRightControl(k)) {
@@ -18,15 +21,18 @@ const animations = {
       /* https://stackoverflow.com/a/41633001 */
       const pressedTime = new Date();
       let timeDiff = pressedTime - startTime; //in ms
-      liveAnimation.push({
-        time: timeDiff,
-        k: k,
-        color: pad.brushColor._name
-      });
+      // liveAnimationRecord.push({
+      //   time: timeDiff,
+      //   k: k,
+      //   color: pad.brushColor._name
+      // });
 
       let animationId = (k[0] * 8) + k[1];
 
       animations.paintAnimationById(animationId);
+    }
+    if (pad.isTopControl(k,7)) {
+      preservePainting = isPressed;
     }
   },
   paintAnimationById: function(id) {
@@ -36,12 +42,21 @@ const animations = {
     }
   },
   paintAnimation: function(literalAnimation) {
-    pad.cleanBoard();
-    literalAnimation.forEach(function(item) {
-      setTimeout(() => {
+    if (!preservePainting) {
+      animations.cleanAnimation();
+    }
+    literalAnimation.forEach(function(item, index) {
+      liveAnimationTimesout.push(setTimeout(() => {
         pad.paint(pad.brushColor, [Number(item.x), Number(item.y)]);
-      }, item.time);
+      }, pad.speed * index));
+    })
+  },
+  cleanAnimation: function() {
+    pad.cleanBoard();
+    liveAnimationTimesout.forEach(function(timeout) {
+      clearTimeout(timeout);
     });
+    liveAnimationTimesout = [];
   }
 }
 

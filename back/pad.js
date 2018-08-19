@@ -64,8 +64,11 @@ pad.reset = (val) => {
 /* Asigna el pulsar una tecla en el launchpad con la función del juego */
 launchpad.on('key', k => {
   gamePadFunction(k, launchpad.isPressed(k));
-  if (pad.utils.isRightControl(k) && pad.utils.isActivePallete) {
+  if (pad.utils.isPaletteActivated && launchpad.isPressed(k) && pad.utils.isRightControl(k)) {
     pad.utils.setNewColor(k);
+  }
+  if (pad.utils.isSpeedActivated && launchpad.isPressed(k) && pad.utils.isTopControl(k)) {
+    pad.utils.updateSpeed(k);
   }
 });
 
@@ -134,7 +137,7 @@ pad.utils = {
   brushColor: launchpad.red,
   colorOff: launchpad.off,
   selectedColorKey: [8,7],
-  isActivePallete: false,
+  isPaletteActivated: false,
   palette: [
     [launchpad.red.low, [8, 0]],
     [launchpad.red.full, [8, 1]],
@@ -145,7 +148,7 @@ pad.utils = {
     [launchpad.off, [8, 6]]
   ],
   paintPalette: function() {
-    pad.utils.isActivePallete = true;
+    pad.utils.isPaletteActivated = true;
     pad.utils.palette.forEach(function(item) {
       pad.utils.paint(item[0], item[1]);
     });
@@ -157,6 +160,30 @@ pad.utils = {
     });
     pad.utils.brushColor = pad.utils.palette[controlIndex][0];
     pad.utils.paint(pad.utils.brushColor, pad.utils.selectedColorKey);
+  },
+  speed: 50,
+  maxSpeed: 200,
+  minSpeed: 0,
+  initSpeed: function(){
+    pad.utils.isSpeedActivated = true;
+  },
+  updateSpeed: function(key) {
+    if (pad.utils.isTopControl(key, 0)) {
+      pad.utils.updateSpeedValue(pad.utils.speed - 20);
+    } else if (pad.utils.isTopControl(key, 1)) {
+      pad.utils.updateSpeedValue(pad.utils.speed + 20);
+    } else if (pad.utils.isTopControl(key, 2)) {
+      pad.utils.updateSpeedValue(pad.utils.speed - 5);
+    } else if (pad.utils.isTopControl(key, 3)) {
+      pad.utils.updateSpeedValue(pad.utils.speed + 5);
+    }
+  },
+  updateSpeedValue: function(newVal) {
+    if (newVal > pad.utils.minSpeed && newVal < pad.utils.maxSpeed) {
+      pad.utils.speed = newVal;
+    } else {
+      pad.utils.speed = newVal <= pad.utils.minSpeed ? pad.utils.minSpeed : pad.utils.maxSpeed;
+    }
   },
   countdown: function(callback) {
     pad.utils.cleanAll();
@@ -175,7 +202,8 @@ pad.utils = {
     }
   },
   cleanAll: function() {
-    pad.utils.isActivePallete = false;
+    pad.utils.isPaletteActivated = false;
+    pad.utils.isSpeedActivated = false;
     launchpad.reset(0);
   },
   cleanBoard: function() {
