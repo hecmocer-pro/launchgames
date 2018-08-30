@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Launchgames | Freepaint</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="./freepaint.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" >
+
+  </head>
+<body>
+  <div class="game freepaint game-container" data-game="freepaint">
+    <div class="game-instruction">
+      <div class="instruction-title">Instructions</div>
+      <div>
+        <ul>
+          <li>Press a 8x8 square to paint</li>
+          <li>Press a side button to change color</li>
+        </ul>
+        <hr>
+        <ul>
+          <li>The current color is shown in the bottom side button </li>
+          <li>Press the <i>off</i> color 3 times to clean the board </li>
+        </ul>
+      </div>
+    </div>
+    <button class="closeGame game-closeBtn" data-game="freepaint"><img class="backbutton" src="../icon.png"></img></button>
+  </div>
+  <div id="toastSlot"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  <script src="../dom.js"></script>
+  <script src="../socketSetup.js"></script>
+</body>
+</html>

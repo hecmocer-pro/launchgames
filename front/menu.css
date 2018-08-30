@@ -1,0 +1,97 @@
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+.menu {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #eee;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.menu .heading{
+  font-family: cursive;
+  font-size: 28px;
+}
+.menu > ul {
+  list-style: none;
+}
+.menu > ul > li{
+  padding: 14px 0;
+}
+
+.menu > ul > li > a {
+  background-color: transparent;
+  border-bottom: 3px solid;
+  font-family: monospace;
+  font-size: 16px;
+  padding: 6px 24px 6px 14px;
+  border-radius: 2px;
+}
+.menu > ul > li > a.freepaint{
+  background-color: var(--freepaint-color-transparency);
+  border-color: var(--freepaint-color);
+}
+.menu > ul > li > a.freepaint:not([disabled]):hover{
+  background-color: var(--freepaint-color);
+  border-color: #000;
+}
+.menu > ul > li > a.animations{
+  background-color: var(--animations-color-transparency);
+  border-color: var(--animations-color);
+}
+.menu > ul > li > a.animations:not([disabled]):hover{
+  background-color: var(--animations-color);
+  border-color: #000;
+}
+.menu > ul > li > a.instruments{
+  background-color: var(--instruments-color-transparency);
+  border-color: var(--instruments-color);
+}
+.menu > ul > li > a.instruments:not([disabled]):hover{
+  background-color: var(--instruments-color);
+  border-color: #000;
+}
+.menu > ul > li > a.messages{
+  background-color: var(--messages-color-transparency);
+  border-color: var(--messages-color);
+}
+.menu > ul > li > a.messages:not([disabled]):hover{
+  background-color: var(--messages-color);
+  border-color: #000;
+}
+.menu > ul > li > a.snake{
+  background-color: var(--snake-color-transparency);
+  border-color: var(--snake-color);
+}
+.menu > ul > li > a.snake:not([disabled]):hover{
+  background-color: var(--snake-color);
+  border-color: #000;
+}
+.menu > ul > li > a.simonSays{
+  background-color: var(--simon-says-color-transparency);
+  border-color: var(--simon-says-color);
+}
+.menu > ul > li > a.simonSays:not([disabled]):hover{
+  background-color: var(--simon-says-color);
+  border-color: #000;
+}
+.menu > ul > li > a.fast{
+  background-color: var(--fast-color-transparency);
+  border-color: var(--fast-color);
+}
+.menu > ul > li > a.fast:not([disabled]):hover{
+  background-color: var(--fast-color);
+  border-color: #000;
+}
+.menu > ul > li > a.minesweeper{
+  background-color: var(--minesweeper-color-transparency);
+  border-color: var(--minesweeper-color);
+}
+.menu > ul > li > a.minesweeper:not([disabled]):hover{
+  background-color: var(--minesweeper-color);
+  border-color: #000;
+}

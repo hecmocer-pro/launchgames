@@ -25,7 +25,7 @@ In any case, it is possible to clone/download the project and run it locally
 
   ```nodemon app.js```
 
-- Open a browser and paste `localhost:8080`
+- Open a browser and paste `localhost:3000`
 
 
 # Games checklist

@@ -8,7 +8,19 @@ const socketSetup = require('./back/socketSetup.js');
 const fnConfig = {
   server: function() {
     app.get('/', (req, res) => {
-      res.sendFile(path.join(__dirname+'/front/index.html'));
+      res.sendFile(path.join(__dirname+'/front/menu.html'));
+    });
+    app.get('/animations', (req, res) => {
+      res.sendFile(path.join(__dirname+'/front/Animations/animations.html'));
+    });
+    app.get('/instruments', (req, res) => {
+      res.sendFile(path.join(__dirname+'/front/Instruments/instruments.html'));
+    });
+    app.get('/messages', (req, res) => {
+      res.sendFile(path.join(__dirname+'/front/Messages/messages.html'));
+    });
+    app.get('/freepaint', (req, res) => {
+      res.sendFile(path.join(__dirname+'/front/Freepaint/freepaint.html'));
     });
     app.use(express.static(__dirname + '/front'));
     return app.listen(port, () => {});

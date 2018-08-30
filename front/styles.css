@@ -2,7 +2,8 @@ body {
   margin: 0;
   --freepaint-color: #FFBF00;
   --animations-color: #4ECDC4;
-  --messenger-color: #FF6B6B;
+  --messages-color: #FF6B6B;
+  --instruments-color: #94C42B;
   --snake-color: #9493FE;
   --simon-says-color: #4ECDC4;
   --fast-color: #C7F464;
@@ -11,112 +12,13 @@ body {
   
   --freepaint-color-transparency: rgba(255, 191, 0, .5);
   --animations-color-transparency: rgba(78,205,196, .5);
-  --messenger-color-transparency: rgba(255,107,107, .5);
+  --messages-color-transparency: rgba(255,107,107, .5);
+  --instruments-color-transparency: rgba(199,244,100, .5);
   --snake-color-transparency: rgba(148,147,254, .5);
   --simon-says-color-transparency: rgba(78,205,196, .5);
   --fast-color-transparency: rgba(199,244,100, .5);
   --minesweeper-color-transparency: rgba(115, 65, 47, .5);
   /* --chess-color-transparency: rgba(196,77,88, .5); */
-}
-
-.onboarding {
-  min-height: 100vh;
-  width: 100%;
-  background-color: #eee;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-.onboarding .heading{
-  font-family: cursive;
-  font-size: 28px;
-  margin-bottom: 0;
-}
-.onboarding > ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  width: 100%;
-  height: 30%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.onboarding > ul > li{
-  display: flex;
-  flex-wrap: wrap;
-  width: 40%;
-  padding: 5%;
-  min-width: 250px;
-  min-height: 250px;
-  justify-content: center;
-}
-
-.onboarding > ul > li > .openGame{
-  width: 250px;
-  height: 250px;
-  background-color: transparent;
-  border: 3px solid;
-  font-family: monospace;
-  font-size: 16px;
-  overflow: hidden;
-}
-.onboarding > ul > li > .openGame.freepaint{
-  background-color: var(--freepaint-color-transparency);
-  border-color: var(--freepaint-color);
-}
-.onboarding > ul > li > .openGame.freepaint:not([disabled]):hover{
-  background-color: var(--freepaint-color);
-  border-color: #000;
-}
-.onboarding > ul > li > .openGame.animations{
-  background-color: var(--animations-color-transparency);
-  border-color: var(--animations-color);
-}
-.onboarding > ul > li > .openGame.animations:not([disabled]):hover{
-  background-color: var(--animations-color);
-  border-color: #000;
-}
-.onboarding > ul > li > .openGame.messenger{
-  background-color: var(--messenger-color-transparency);
-  border-color: var(--messenger-color);
-}
-.onboarding > ul > li > .openGame.messenger:not([disabled]):hover{
-  background-color: var(--messenger-color);
-  border-color: #000;
-}
-.onboarding > ul > li > .openGame.snake{
-  background-color: var(--snake-color-transparency);
-  border-color: var(--snake-color);
-}
-.onboarding > ul > li > .openGame.snake:not([disabled]):hover{
-  background-color: var(--snake-color);
-  border-color: #000;
-}
-.onboarding > ul > li > .openGame.simonSays{
-  background-color: var(--simon-says-color-transparency);
-  border-color: var(--simon-says-color);
-}
-.onboarding > ul > li > .openGame.simonSays:not([disabled]):hover{
-  background-color: var(--simon-says-color);
-  border-color: #000;
-}
-.onboarding > ul > li > .openGame.fast{
-  background-color: var(--fast-color-transparency);
-  border-color: var(--fast-color);
-}
-.onboarding > ul > li > .openGame.fast:not([disabled]):hover{
-  background-color: var(--fast-color);
-  border-color: #000;
-}
-.onboarding > ul > li > .openGame.minesweeper{
-  background-color: var(--minesweeper-color-transparency);
-  border-color: var(--minesweeper-color);
-}
-.onboarding > ul > li > .openGame.minesweeper:not([disabled]):hover{
-  background-color: var(--minesweeper-color);
-  border-color: #000;
 }
 
 .game{
@@ -135,8 +37,11 @@ body {
 .game.animations {
   background-color: var(--animations-color);
 }
-.game.messenger {
-  background-color: var(--messenger-color);
+.game.messages {
+  background-color: var(--messages-color);
+}
+.game.instruments {
+  background-color: var(--instruments-color);
 }
 .game.snake {
   background-color: var(--snake-color);
@@ -205,21 +110,21 @@ body {
 .game-btn-loop {
   width: 120px;
 }
-.messenger-textarea {
+.messages-textarea {
   font-size: 3rem;
   color: #004085;
   background-color: #cce5ff;
   border-color: #b8daff;
 }
-.messenger-textarea:hover {
+.messages-textarea:hover {
   background-color: #d4edda;
   border-color: #c3e6cb;
   color: #155724;
 }
-.messenger-speed-container{
+.messages-speed-container{
   text-align: center;
 }
-.messenger-speed-indicator {
+.messages-speed-indicator {
   font-size: 24px;
 }
 .game-instruction {
@@ -329,8 +234,4 @@ body {
 @keyframes hidingAnimation {
     from {opacity: 100%}
     to {opacity: 0}
-}
-
-.closeGame{
-  /* ESTA CLASE SOLO SIRVE PARA JS */
 }

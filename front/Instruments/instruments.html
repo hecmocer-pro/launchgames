@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Launchgames | Instruments</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="./instruments.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" >
+
+  </head>
+<body>
+  <div class="game instruments game-container" data-game="instruments">
+    <div class="game-instruction">
+      <div class="instruction-title">Instructions</div>
+      <div>
+        <ul>
+          <li>NONE</li>
+        </ul>
+        <hr>
+        <ul>
+          <li>NO DESCRIPTION</li>
+        </ul>
+      </div>
+    </div>
+    <audio controls id="audio1">
+      <source src="../Audios/Drums1.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <audio controls id="audio2">
+      <source src="../Audios/Drums2.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <audio controls id="audio3">
+      <source src="../Audios/Drums3.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <audio controls id="audio4">
+      <source src="../Audios/Drums4.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <audio controls id="audio5">
+      <source src="../Audios/Drums5.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <button class="closeGame game-closeBtn" data-game="instruments"><img class="backbutton" src="../icon.png"></img></button>
+  </div>
+  <div id="toastSlot"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  <script src="../dom.js"></script>
+  <script src="../socketSetup.js"></script>
+</body>
+</html>

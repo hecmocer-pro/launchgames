@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Launchgames | Messages</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="./messages.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" >
+
+  </head>
+<body>
+  <div class="game messenger game-container" data-game="messenger">
+    <div class="game-instruction">
+      <div class="instruction-title">Instructions</div>
+      <div>
+        <ul>
+          <li>Type something</li>
+          <li>Adjust the speed</li>
+        </ul>
+        <hr>
+        <ul>
+          <li>The launchpad will display the text!</li>
+        </ul>
+      </div>
+    </div>
+    <div class="game-input-container">
+      <textarea id="messenger-textarea" class="messenger-textarea" cols="30" rows="2"></textarea>
+      <div class="game-control-container">
+        <button class="game-btn" id="messenger-speedDown10">-10</button>
+        <button class="game-btn" id="messenger-speedDown">-1</button>
+        <div class="messenger-speed-container">Speed <span id="messenger-speed" class="messenger-speed-indicator"></span></div>
+        <button class="game-btn" id="messenger-speedUp">+1</button>
+        <button class="game-btn" id="messenger-speedUp10">+10</button>
+      </div>
+      <div class="game-control-container">
+        <button class="game-btn" id="messenger-apply">APPLY</button>
+        <button class="game-btn game-btn-loop" id="messenger-loop">LOOP</button>
+      </div>
+    </div>
+    <button class="closeGame game-closeBtn" data-game="messenger"><img class="backbutton" src="../icon.png"></img></button>
+    <script src="./messages.js"></script>
+  </div>
+  <div id="toastSlot"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+  <script src="../dom.js"></script>
+  <script src="../socketSetup.js"></script>
+</body>
+</html>
