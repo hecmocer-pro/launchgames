@@ -5,6 +5,7 @@ let startTime;
 let liveAnimationRecord = [];
 let liveAnimationTimesout = [];
 let preservePainting = false;
+let preserveSteps = false;
 let animationDictionary = require('./animationDictionary.js');
 
 const animations = {
@@ -31,24 +32,34 @@ const animations = {
 
       animations.paintAnimationById(animationId);
     }
-    if (pad.isTopControl(k,7)) {
-      preservePainting = isPressed;
+    if (isPressed && pad.isTopControl(k,7)) {
+      preservePainting = !preservePainting;
+      preservePainting ? pad.paint(pad.colors.red, [7, 8]) : pad.paint(pad.colors.off, [7, 8]);
+    }
+    if (isPressed && pad.isTopControl(k,4)) {
+      preserveSteps = !preserveSteps;
+      preserveSteps ? pad.paint(pad.colors.red, [4, 8]) : pad.paint(pad.colors.off, [4, 8]);
     }
   },
   paintAnimationById: function(id) {
     const chosenAnimation = animationDictionary[id];
     if (chosenAnimation) {
-      animations.paintAnimation(animationDictionary[id]);
+      animations.paintAnimation(animationDictionary[id], pad.brushColor);
     }
   },
-  paintAnimation: function(literalAnimation) {
+  paintAnimation: function(literalAnimation, color) {
     if (!preservePainting) {
       animations.cleanAnimation();
     }
-    literalAnimation.forEach(function(item, index) {
+    literalAnimation.forEach(function(item) {
       liveAnimationTimesout.push(setTimeout(() => {
-        pad.paint(pad.brushColor, [Number(item.x), Number(item.y)]);
+        pad.paint(color, [Number(item.x), Number(item.y)]);
       }, pad.speed * item.delay));
+      liveAnimationTimesout.push(setTimeout(() => {
+        if (preserveSteps) {
+          pad.paint(pad.colors.off, [Number(item.x), Number(item.y)]);
+        }
+      }, (pad.speed * item.delay) + pad.speed - 1));
     })
   },
   cleanAnimation: function() {

@@ -18,6 +18,30 @@ let gamePadFunction = () => {};
 
 /* Conecta el Launchpad */
 pad.connect = (socketB) => {
+  launchpad.on('key', k => {
+    if(k.pressed && k[0] === 1 && k[1] === 1) {
+      socketB.emit('PLAY_SOUND', 1);
+    }
+    if(k.pressed && k[0] === 2 && k[1] === 2) {
+      socketB.emit('PLAY_SOUND', 2);
+    }
+    if(k.pressed && k[0] === 3 && k[1] === 3) {
+      socketB.emit('PLAY_SOUND', 3);
+    }
+    if(k.pressed && k[0] === 4 && k[1] === 4) {
+      socketB.emit('PLAY_SOUND', 4);
+    }
+    if(k.pressed && k[0] === 5 && k[1] === 5) {
+      socketB.emit('PLAY_SOUND', 5);
+    }
+    gamePadFunction(k, launchpad.isPressed(k));
+    if (pad.utils.isPaletteActivated && launchpad.isPressed(k) && pad.utils.isRightControl(k)) {
+      pad.utils.setNewColor(k);
+    }
+    if (pad.utils.isSpeedActivated && launchpad.isPressed(k) && pad.utils.isTopControl(k)) {
+      pad.utils.updateSpeed(k);
+    }
+  });
   if(!blockedSemaphore && !isConnected){
     blockedSemaphore = true;
     launchpad.connect().then(() => {
@@ -62,15 +86,30 @@ pad.reset = (val) => {
 }
 
 /* Asigna el pulsar una tecla en el launchpad con la función del juego */
-launchpad.on('key', k => {
-  gamePadFunction(k, launchpad.isPressed(k));
-  if (pad.utils.isPaletteActivated && launchpad.isPressed(k) && pad.utils.isRightControl(k)) {
-    pad.utils.setNewColor(k);
-  }
-  if (pad.utils.isSpeedActivated && launchpad.isPressed(k) && pad.utils.isTopControl(k)) {
-    pad.utils.updateSpeed(k);
-  }
-});
+// launchpad.on('key', k => {
+//   if(k[0] === 0 && k[1] === 0) {
+//     socketB.emit('PLAY_SOUND', 1);
+//   }
+//   if(k[0] === 1 && k[1] === 1) {
+//     socketB.emit('PLAY_SOUND', 2);
+//   }
+//   if(k[0] === 2 && k[1] === 2) {
+//     socketB.emit('PLAY_SOUND', 3);
+//   }
+//   if(k[0] === 3 && k[1] === 3) {
+//     socketB.emit('PLAY_SOUND', 4);
+//   }
+//   if(k[0] === 4 && k[1] === 4) {
+//     socketB.emit('PLAY_SOUND', 5);
+//   }
+//   gamePadFunction(k, launchpad.isPressed(k));
+//   if (pad.utils.isPaletteActivated && launchpad.isPressed(k) && pad.utils.isRightControl(k)) {
+//     pad.utils.setNewColor(k);
+//   }
+//   if (pad.utils.isSpeedActivated && launchpad.isPressed(k) && pad.utils.isTopControl(k)) {
+//     pad.utils.updateSpeed(k);
+//   }
+// });
 
 pad.launch = {
   freepaint: (socketB) => {

@@ -30,3 +30,11 @@ socketF.on('LAUNCHPAD_STATUS', (data) => {
     socketF.emit('Kill game', selectedGame);
   }
 });
+
+const audios = [document.querySelector('#audio1'), document.querySelector('#audio2'), document.querySelector('#audio3'), document.querySelector('#audio4'), document.querySelector('#audio5')]
+
+socketF.on('PLAY_SOUND', (data) => {
+  audios[data-1].currentTime = 0;
+  audios[data-1].pause();
+  audios[data-1].play();
+});
