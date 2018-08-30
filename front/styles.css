@@ -64,6 +64,7 @@ body {
   flex-direction: column;
 }
 .game-closeBtn {
+  background-color: white;
   font-size: 2rem;
   color: #721c24;
   border: solid 2px #721c24;

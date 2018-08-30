@@ -11,16 +11,16 @@ const fnConfig = {
       res.sendFile(path.join(__dirname+'/front/menu.html'));
     });
     app.get('/animations', (req, res) => {
-      res.sendFile(path.join(__dirname+'/front/Animations/animations.html'));
+      res.sendFile(path.join(__dirname+'/front/Animations.html'));
     });
     app.get('/instruments', (req, res) => {
-      res.sendFile(path.join(__dirname+'/front/Instruments/instruments.html'));
+      res.sendFile(path.join(__dirname+'/front/Instruments.html'));
     });
     app.get('/messages', (req, res) => {
-      res.sendFile(path.join(__dirname+'/front/Messages/messages.html'));
+      res.sendFile(path.join(__dirname+'/front/Messages.html'));
     });
     app.get('/freepaint', (req, res) => {
-      res.sendFile(path.join(__dirname+'/front/Freepaint/freepaint.html'));
+      res.sendFile(path.join(__dirname+'/front/Freepaint.html'));
     });
     app.use(express.static(__dirname + '/front'));
     return app.listen(port, () => {});
