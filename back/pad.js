@@ -1,6 +1,7 @@
 "use strict";
 
 const Launchpad = require('launchpad-mini');
+const menu = require('./menu.js');
 const freepaint = require('./freepaint.js');
 const animations = require('./animations.js');
 const messenger = require('./messenger.js');
@@ -19,21 +20,21 @@ let gamePadFunction = () => {};
 /* Conecta el Launchpad */
 pad.connect = (socketB) => {
   launchpad.on('key', k => {
-    if(k.pressed && k[0] === 1 && k[1] === 1) {
-      socketB.emit('PLAY_SOUND', 1);
-    }
-    if(k.pressed && k[0] === 2 && k[1] === 2) {
-      socketB.emit('PLAY_SOUND', 2);
-    }
-    if(k.pressed && k[0] === 3 && k[1] === 3) {
-      socketB.emit('PLAY_SOUND', 3);
-    }
-    if(k.pressed && k[0] === 4 && k[1] === 4) {
-      socketB.emit('PLAY_SOUND', 4);
-    }
-    if(k.pressed && k[0] === 5 && k[1] === 5) {
-      socketB.emit('PLAY_SOUND', 5);
-    }
+    // if(k.pressed && k[0] === 1 && k[1] === 1) {
+    //   socketB.emit('PLAY_SOUND', 1);
+    // }
+    // if(k.pressed && k[0] === 2 && k[1] === 2) {
+    //   socketB.emit('PLAY_SOUND', 2);
+    // }
+    // if(k.pressed && k[0] === 3 && k[1] === 3) {
+    //   socketB.emit('PLAY_SOUND', 3);
+    // }
+    // if(k.pressed && k[0] === 4 && k[1] === 4) {
+    //   socketB.emit('PLAY_SOUND', 4);
+    // }
+    // if(k.pressed && k[0] === 5 && k[1] === 5) {
+    //   socketB.emit('PLAY_SOUND', 5);
+    // }
     gamePadFunction(k, launchpad.isPressed(k));
     if (pad.utils.isPaletteActivated && launchpad.isPressed(k) && pad.utils.isRightControl(k)) {
       pad.utils.setNewColor(k);
@@ -42,7 +43,13 @@ pad.connect = (socketB) => {
       pad.utils.updateSpeed(k);
     }
   });
-  if(!blockedSemaphore && !isConnected){
+  if (isConnected) {
+    socketB.emit('LAUNCHPAD_STATUS', {
+      statusTo: 'Connect',
+      code: 'Success',
+      msg: 'Launchpad was already connected'
+    });
+  } else if (!blockedSemaphore) {
     blockedSemaphore = true;
     launchpad.connect().then(() => {
       socketB.emit('LAUNCHPAD_STATUS', {
@@ -112,6 +119,10 @@ pad.reset = (val) => {
 // });
 
 pad.launch = {
+  menu: (socketB) => {
+    pad.utils.cleanAll();
+    menu.init(pad.utils, socketB);
+  },
   freepaint: (socketB) => {
     // pad.utils.countdown(function() {
       pad.utils.cleanAll();
@@ -168,8 +179,11 @@ pad.utils = {
   fromMap: (param) => { launchpad.fromMap(param) },
   colors: {
     red: launchpad.red,
+    redLow: launchpad.red.low,
     green: launchpad.green,
+    greenLow: launchpad.green.low,
     amber: launchpad.amber,
+    amberLow: launchpad.amber.low,
     off: launchpad.off,
     // +low +medium +full
   },

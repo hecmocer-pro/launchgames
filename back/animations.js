@@ -9,10 +9,15 @@ let preserveSteps = false;
 let animationDictionary = require('./animationDictionary.js');
 
 const animations = {
-  init: function(utils, socketB) {
-    socketB.on('Animations update', (animation) => animations.paintAnimation(animation.sequence));
-    startTime = new Date();
+  setup: function(utils, preservePaintingVal, preserveStepsVal) {
+    preservePainting = preservePaintingVal;
+    preserveSteps = preserveStepsVal;
     pad = utils;
+  },
+  init: function(utils, socketB) {
+    animations.setup(utils)
+    startTime = new Date();
+    socketB.on('Animations update', (animation) => animations.paintAnimation(animation.sequence));
     pad.paintPalette();
     pad.initSpeed();
   },

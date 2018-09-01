@@ -1,3 +1,5 @@
+const selectedGame = 'Animations';
+
 (function() {
   const x = document.querySelector('#animations-x');
   const y = document.querySelector('#animations-y');

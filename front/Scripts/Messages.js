@@ -1,3 +1,5 @@
+const selectedGame = 'Messages';
+
 (function() {
   const textarea = document.querySelector('#messenger-textarea');
   const btnSpeedDown10 = document.querySelector('#messenger-speedDown10');

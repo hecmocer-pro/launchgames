@@ -23,25 +23,28 @@ const fn = {
   },
   launchGame: function(msg, socketB) {
     switch (msg) {
-      case 'freepaint':
+      case 'Menu': 
+        pad.launch.menu(socketB);
+      break;
+      case 'Freepaint':
         pad.launch.freepaint(socketB);
       break;
-      case 'animations':
+      case 'Animations':
         pad.launch.animations(socketB);
       break;
-      case 'messenger':
+      case 'Messenger':
         pad.launch.messenger(socketB);
       break;
-      case 'snake':
+      case 'Snake':
         pad.launch.snake();
         break;
-      case 'simon-says':
+      case 'Simon-says':
         pad.launch.simon();
         break;
-      case 'fast':
+      case 'Fast':
         pad.launch.fast();
         break;
-      case 'minesweeper':
+      case 'Minesweeper':
         pad.launch.minesweeper();
         break;
       default:
