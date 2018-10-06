@@ -7,6 +7,7 @@ let liveAnimationTimesout = [];
 let preservePainting = false;
 let preserveSteps = false;
 let animationDictionary = require('./animationDictionary.js');
+let messages = require('./messages.js');
 
 const animations = {
   setup: function(utils, preservePaintingVal, preserveStepsVal) {
@@ -20,6 +21,7 @@ const animations = {
     socketB.on('Animations update', (animation) => animations.paintAnimation(animation.sequence));
     pad.paintPalette();
     pad.initSpeed();
+    messages.init(utils, socketB);
   },
   padFunction: function(k, isPressed) {
     if (isPressed && !pad.isTopControl(k) && !pad.isRightControl(k)) {
@@ -44,6 +46,9 @@ const animations = {
     if (isPressed && pad.isTopControl(k,4)) {
       preserveSteps = !preserveSteps;
       preserveSteps ? pad.paint(pad.colors.red, [4, 8]) : pad.paint(pad.colors.off, [4, 8]);
+    }
+    if (isPressed && pad.isTopControl(k,5)) {
+      messages.speakThis({speed: 40, text: 'W L h M', loop: false});
     }
   },
   paintAnimationById: function(id) {

@@ -16,9 +16,9 @@ const menu = {
   padFunction: function(k, isPressed) {
   },
   paintIdleAnimations() {
-    animations.paintAnimation(animationDictionaryAux[0], pad.colors.red);
-    animations.paintAnimation(animationDictionaryAux[1], pad.colors.redLow);
-    setTimeout(menu.paintIdleAnimations, pad.speed * animationDictionaryAux[0].length);
+    // animations.paintAnimation(animationDictionaryAux[0], pad.colors.red);
+    // animations.paintAnimation(animationDictionaryAux[1], pad.colors.redLow);
+    // setTimeout(menu.paintIdleAnimations, pad.speed * animationDictionaryAux[0].length);
   }
 }
 

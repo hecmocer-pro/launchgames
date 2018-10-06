@@ -4,7 +4,7 @@ const Launchpad = require('launchpad-mini');
 const menu = require('./menu.js');
 const freepaint = require('./freepaint.js');
 const animations = require('./animations.js');
-const messenger = require('./messenger.js');
+const messages = require('./messages.js');
 const snake = require('./snake.js');
 // const simon = require('./simon-says.js');
 const launchpad = new Launchpad();
@@ -137,11 +137,11 @@ pad.launch = {
       gamePadFunction = animations.padFunction;
     // })
   },
-  messenger: (socketB) => {
+  messages: (socketB) => {
     // pad.utils.countdown(function() {
       pad.utils.cleanAll();
-      messenger.init(pad.utils, socketB);
-      gamePadFunction = messenger.padFunction;
+      messages.init(pad.utils, socketB);
+      gamePadFunction = messages.padFunction;
     // })
   },
   snake: () => {
@@ -163,7 +163,7 @@ pad.kill = {
   animations: () => {
     gamePadFunction = () => {};
   },
-  messenger: () => {
+  messages: () => {
     /* NOTHING TO DO */
   },
   snake: () => {

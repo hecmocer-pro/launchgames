@@ -32,8 +32,8 @@ const fn = {
       case 'Animations':
         pad.launch.animations(socketB);
       break;
-      case 'Messenger':
-        pad.launch.messenger(socketB);
+      case 'Messages':
+        pad.launch.messages(socketB);
       break;
       case 'Snake':
         pad.launch.snake();
