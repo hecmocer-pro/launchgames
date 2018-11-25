@@ -12,23 +12,21 @@ const freepaint = {
     pad = utils;
     pad.paintPalette();
   },
-  paintAnimation: function(chosenAnimation) {
-    pad.cleanBoard();
-    chosenAnimation.forEach(function(item) {
-      setTimeout(() => {
-        pad.paint(pad.colors[item.color], [Number(item.x), Number(item.y)]);
-      }, item.time);
-    });
-  },
+  // paintAnimation: function(chosenAnimation) {
+  //   pad.cleanBoard();
+  //   chosenAnimation.forEach(function(item) {
+  //     setTimeout(() => {
+  //       pad.paint(pad.colors[item.color], [Number(item.x), Number(item.y)]);
+  //     }, item.time);
+  //   });
+  // },
   padFunction: function(k, isPressed) {
     if (isPressed) {
       if (pad.isRightControl(k,6)) {
-        console.log(painting);
         freepaint.resetCheat(); // three times in a row cleans the board
       }
   
       if (!pad.isTopControl(k) && !pad.isRightControl(k)) {
-        
         /* https://stackoverflow.com/a/41633001 */
         const pressedTime = new Date();
         let timeDiff = pressedTime - startTime; //in ms
@@ -52,9 +50,9 @@ const freepaint = {
       freepaint.removePaint(k, foundIndex);
     }
   },
-  log: function() {
-    console.log(painting.map(pair => [pair[0][0], pair[0][1]]));
-  },
+  // log: function() {
+  //   console.log(painting.map(pair => [pair[0][0], pair[0][1]]));
+  // },
   resetCheat: function() {
     resetCheatCount++;
     if (resetCheatCount >= 3) {

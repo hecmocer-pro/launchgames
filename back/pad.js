@@ -198,7 +198,7 @@ pad.utils = {
     [launchpad.green.full, [8, 3]],
     [launchpad.amber.low, [8, 4]],
     [launchpad.amber.full, [8, 5]],
-    [launchpad.off, [8, 6]]
+    [launchpad.off, [8, 6]],
   ],
   paintPalette: function() {
     pad.utils.isPaletteActivated = true;
@@ -211,8 +211,10 @@ pad.utils = {
     const controlIndex = pad.utils.palette.findIndex(function(item) {
       return item[1][0] === k[0] && item[1][1] === k[1]
     });
-    pad.utils.brushColor = pad.utils.palette[controlIndex][0];
-    pad.utils.paint(pad.utils.brushColor, pad.utils.selectedColorKey);
+    if (controlIndex > -1) {
+      pad.utils.brushColor = pad.utils.palette[controlIndex][0];
+      pad.utils.paint(pad.utils.brushColor, pad.utils.selectedColorKey);
+    }
   },
   speed: 50,
   maxSpeed: 200,
