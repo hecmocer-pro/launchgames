@@ -7,7 +7,6 @@ let liveAnimationTimesout = [];
 let preservePainting = false;
 let preserveSteps = false;
 let animationDictionary = require('./animationDictionary.js');
-let messages = require('./messages.js');
 
 const animations = {
   setup: function(utils, preservePaintingVal, preserveStepsVal) {
@@ -21,7 +20,6 @@ const animations = {
     socketB.on('Animations update', (animation) => animations.paintAnimation(animation.sequence));
     pad.paintPalette();
     pad.initSpeed();
-    messages.init(utils, socketB);
   },
   padFunction: function(k, isPressed) {
     if (isPressed && !pad.isTopControl(k) && !pad.isRightControl(k)) {
@@ -47,9 +45,6 @@ const animations = {
       preserveSteps = !preserveSteps;
       preserveSteps ? pad.paint(pad.colors.red, [4, 8]) : pad.paint(pad.colors.off, [4, 8]);
     }
-    if (isPressed && pad.isTopControl(k,5)) {
-      messages.speakThis({speed: 40, text: 'W L h M', loop: false});
-    }
   },
   paintAnimationById: function(id) {
     const chosenAnimation = animationDictionary[id];
@@ -58,12 +53,13 @@ const animations = {
     }
   },
   paintAnimation: function(literalAnimation, color) {
+    color = color ? color : pad.brushColor ? pad.brushColor : pad.colors.red; /* Default color just in case */
     if (!preservePainting) {
       animations.cleanAnimation();
     }
     literalAnimation.forEach(function(item) {
       liveAnimationTimesout.push(setTimeout(() => {
-        pad.paint(color, [Number(item.x), Number(item.y)]);
+        pad.paint(pad.colors[item.color] || color, [Number(item.x), Number(item.y)]);
       }, pad.speed * item.delay));
       liveAnimationTimesout.push(setTimeout(() => {
         if (preserveSteps) {
