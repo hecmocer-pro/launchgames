@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href="./Styles/styles.css">
     <link rel="stylesheet" type="text/css" href="./Styles/Animations.css">
-    <link rel="shortcut icon" type="image/x-icon" href="./Media/favicon.ico" >
+    <link rel="icon" type="image/png" href="./Media/favicon.png">
 
   </head>
 <body>
@@ -15,36 +15,44 @@
       <div class="instruction-title">Instructions</div>
       <div>
         <ul>
-          <li>Edit a custom animation</li>
-          <li>Try it out with the apply button</li>
-          <li>Save it to a .txt file to be able to paste it back later</li>
-        </ul>
-        <hr>
-        <ul>
           <li>The launchpad has some predefined animations built in</li>
           <li>Trigger an animation by tapping on a 8x8 square</li>
         </ul>
+        <hr>
+        <ul>
+          <li>Increase/Decrease speed x5 with the up and down arrows</li>
+          <li>Increase/Decrease speed x1 with the left and right arrows</li>
+          <li>Session preserves the painting once finished</li>
+          <li>Mixer preserves the steps along the animation</li>
+          <li>User 1 and User 2 change between animation dictionaries</li>
+          <li>Change color with the palette on the right</li>
+        </ul>
       </div>
     </div>
-    <div class="game-input-container">
-      <div class="game-control-container">
-          <div><input type="text" class="animations-input animations-input-xs" id="animations-x" placeholder="x"></div>
-          <div><input type="text" class="animations-input animations-input-xs" id="animations-y" placeholder="y"></div>
-          <div><input type="text" class="animations-input animations-input-sm" id="animations-time" placeholder="time"></div>
-          <div><input type="text" class="animations-input animations-input-md" id="animations-color" placeholder="color"></div>
-          <button id="animations-add" class="game-btn">ADD</button>
-      </div>
-      <pre id="animations-sequence" class="game-code" contenteditable="true"></pre>
-      <div class="game-control-container">
-        <button class="game-btn" id="animations-apply">APPLY</button>
-        <button class="game-btn game-btn-loop" id="animations-loop">LOOP</button>
-      </div>
-      <div class="game-control-container">
-        <button class="game-btn" id="animations-save">SAVE</button>
+    <!--
+This chunk was made to be able to setup animations from the UI
+After breaking it, I decided to deprecate it because of its complexity and lack of use.
+
+      <div class="game-input-container">
+        <div class="game-control-container">
+            <div><input type="text" class="animations-input animations-input-xs" id="animations-x" placeholder="x"></div>
+            <div><input type="text" class="animations-input animations-input-xs" id="animations-y" placeholder="y"></div>
+            <div><input type="text" class="animations-input animations-input-sm" id="animations-time" placeholder="time"></div>
+            <div><input type="text" class="animations-input animations-input-md" id="animations-color" placeholder="color"></div>
+            <button id="animations-add" class="game-btn">ADD</button>
+        </div>
+        <pre id="animations-sequence" class="game-code" contenteditable="true"></pre>
+        <div class="game-control-container">
+          <button class="game-btn" id="animations-apply">APPLY</button>
+          <button class="game-btn game-btn-loop" id="animations-loop">LOOP</button>
+        </div>
+        <div class="game-control-container">
+          <button class="game-btn" id="animations-save">SAVE</button>
+        </div>
       </div>
     </div>
-    <a href="../" class="game-closeBtn"><img class="backbutton" src="./Media/icon.png"></img></a>
-  </div>
+  -->
+  <a href="../" class="game-closeBtn"><img class="backbutton" src="./Media/icon.png"></img></a>
   <div id="toastSlot"></div>
   
   <script src="./Scripts/socket-io.min.js"></script>

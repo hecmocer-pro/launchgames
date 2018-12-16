@@ -1,5 +1,10 @@
 const selectedGame = 'Animations';
 
+/*
+This chunk was made to be able to setup animations from the UI
+After breaking it, I decided to deprecate it because of its complexity and lack of use.
+
+
 (function() {
   const x = document.querySelector('#animations-x');
   const y = document.querySelector('#animations-y');
@@ -58,3 +63,4 @@ const selectedGame = 'Animations';
     color.value = null;  
   }
 })();
+*/
