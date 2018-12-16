@@ -6,7 +6,11 @@ let liveAnimationRecord = [];
 let liveAnimationTimesout = [];
 let preservePainting = false;
 let preserveSteps = false;
-let animationDictionary = require('./animationDictionary.js');
+let selectedAnimationDictionary = 0;
+let animationDictionaries = [
+  require('./animationDictionary1.js'),
+  require('./animationDictionary2.js')
+];
 
 const animations = {
   setup: function(utils, preservePaintingVal, preserveStepsVal) {
@@ -18,6 +22,8 @@ const animations = {
     animations.setup(utils)
     startTime = new Date();
     socketB.on('Animations update', (animation) => animations.paintAnimation(animation.sequence));
+    animations.setAnimationDictionary(selectedAnimationDictionary);
+    pad.paint(pad.colors.red, [5, 8]);
     pad.paintPalette();
     pad.initSpeed();
   },
@@ -37,6 +43,16 @@ const animations = {
 
       animations.paintAnimationById(animationId);
     }
+    if (isPressed && pad.isTopControl(k,5)) {
+      animations.setAnimationDictionary(0);
+      pad.paint(pad.colors.red, [5, 8]);
+      pad.paint(pad.colors.off, [6, 8]);
+    }
+    if (isPressed && pad.isTopControl(k,6)) {
+      animations.setAnimationDictionary(1);
+      pad.paint(pad.colors.red, [6, 8]);
+      pad.paint(pad.colors.off, [5, 8]);
+    }
     if (isPressed && pad.isTopControl(k,7)) {
       preservePainting = !preservePainting;
       preservePainting ? pad.paint(pad.colors.red, [7, 8]) : pad.paint(pad.colors.off, [7, 8]);
@@ -46,10 +62,13 @@ const animations = {
       preserveSteps ? pad.paint(pad.colors.red, [4, 8]) : pad.paint(pad.colors.off, [4, 8]);
     }
   },
+  setAnimationDictionary: function(index) {
+    selectedAnimationDictionary = index;
+  },
   paintAnimationById: function(id) {
-    const chosenAnimation = animationDictionary[id];
+    const chosenAnimation = animationDictionaries[selectedAnimationDictionary][id];
     if (chosenAnimation) {
-      animations.paintAnimation(animationDictionary[id], pad.brushColor);
+      animations.paintAnimation(chosenAnimation, pad.brushColor);
     }
   },
   paintAnimation: function(literalAnimation, color) {
