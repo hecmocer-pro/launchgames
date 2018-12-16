@@ -12,7 +12,7 @@ body {
   
   --freepaint-color-transparency: rgba(255, 191, 0, .5);
   --animations-color-transparency: rgba(78,205,196, .5);
-  --messages-color-transparency: rgba(255,107,107, .5);
+  --messages-color-transparency: rgba(255, 107, 107, 0.5);
   --instruments-color-transparency: rgba(199,244,100, .5);
   --snake-color-transparency: rgba(148,147,254, .5);
   --simon-says-color-transparency: rgba(78,205,196, .5);
@@ -235,4 +235,52 @@ body {
 @keyframes hidingAnimation {
     from {opacity: 100%}
     to {opacity: 0}
+}
+
+
+.view-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.launchpadContainer {
+  background-color: #616161;
+  width: 384px;
+  height: 384px;
+  border-radius: 7px;
+}
+.topControls {
+  display: flex;
+  height: 48px;
+  margin-left: 12px;
+  align-items: center;
+}
+.sideControl {
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 4px;
+  width: 32px;
+  height: 32px;
+}
+.mainControls {
+  margin-left: 12px;
+  display: flex;
+  height: 336px;
+  width: 320px;
+}
+.mainControl {
+  width: 32px;
+  height: 32px;
+  margin: 8px 4px;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+}
+.rightControls {
+  margin-left: 8px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  height: 332px;
+  width: 48px;
 }
