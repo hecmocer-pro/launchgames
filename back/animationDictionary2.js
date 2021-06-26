@@ -455,6 +455,41 @@ const animationDictionary2 = [
     x: 0,
     y: 7,
     delay: 0
+  },
+  {
+    x: 0,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 0,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 0,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 0,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 0,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 0,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 0,
+    y: 0,
+    delay: 7
   }
 ],
 //1,7
@@ -463,6 +498,41 @@ const animationDictionary2 = [
     x: 1,
     y: 7,
     delay: 0
+  },
+  {
+    x: 1,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 1,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 1,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 1,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 1,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 1,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 1,
+    y: 0,
+    delay: 7
   }
 ],
 //2,7
@@ -471,6 +541,41 @@ const animationDictionary2 = [
     x: 2,
     y: 7,
     delay: 0
+  },
+  {
+    x: 2,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 2,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 2,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 2,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 2,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 2,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 2,
+    y: 0,
+    delay: 7
   }
 ],
 //3,7
@@ -479,6 +584,41 @@ const animationDictionary2 = [
     x: 3,
     y: 7,
     delay: 0
+  },
+  {
+    x: 3,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 3,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 3,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 3,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 3,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 3,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 3,
+    y: 0,
+    delay: 7
   }
 ],
 //4,7
@@ -487,6 +627,41 @@ const animationDictionary2 = [
     x: 4,
     y: 7,
     delay: 0
+  },
+  {
+    x: 4,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 4,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 4,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 4,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 4,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 4,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 4,
+    y: 0,
+    delay: 7
   }
 ],
 //5,7
@@ -495,6 +670,41 @@ const animationDictionary2 = [
     x: 5,
     y: 7,
     delay: 0
+  },
+  {
+    x: 5,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 5,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 5,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 5,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 5,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 5,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 5,
+    y: 0,
+    delay: 7
   }
 ],
 //6,7
@@ -503,6 +713,41 @@ const animationDictionary2 = [
     x: 6,
     y: 7,
     delay: 0
+  },
+  {
+    x: 6,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 6,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 6,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 6,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 6,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 6,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 6,
+    y: 0,
+    delay: 7
   }
 ],
 //7,7
@@ -511,6 +756,41 @@ const animationDictionary2 = [
     x: 7,
     y: 7,
     delay: 0
+  },
+  {
+    x: 7,
+    y: 6,
+    delay: 1
+  },
+  {
+    x: 7,
+    y: 5,
+    delay: 2
+  },
+  {
+    x: 7,
+    y: 4,
+    delay: 3
+  },
+  {
+    x: 7,
+    y: 3,
+    delay: 4
+  },
+  {
+    x: 7,
+    y: 2,
+    delay: 5
+  },
+  {
+    x: 7,
+    y: 1,
+    delay: 6
+  },
+  {
+    x: 7,
+    y: 0,
+    delay: 7
   }
 ],
 ];
