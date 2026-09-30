@@ -1,6 +1,6 @@
 # Launchgames
 
-[2022] A local prototype for building browser games controlled with a Novation Launchpad.
+[2017-2021] A local prototype for building browser games controlled with a Novation Launchpad.
 
 # Setup
 
